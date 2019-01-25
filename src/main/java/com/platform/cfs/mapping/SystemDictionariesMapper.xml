@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.platform.cfs.mapper.SystemDictionariesMapper" >
+  <resultMap id="BaseResultMap" type="com.platform.cfs.entity.SystemDictionaries" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="discription" property="discription" jdbcType="VARCHAR" />
+    <result column="rank" property="rank" jdbcType="INTEGER" />
+    <result column="valid" property="valid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="parent_code" property="parentCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Where_Clause">
+    <where>
+      1=1
+      <if test="type != null and type !=''" >
+        and `type` = #{type}
+      </if>
+      <if test="code != null and code !=''" >
+        and code = #{code}
+      </if>
+      <if test="value != null and value !=''" >
+        and `value` = #{value}
+      </if>
+      <if test="discription != null and discription !=''" >
+        and discription = #{discription}
+      </if>
+      <if test="rank != null " >
+        and rank = #{rank}
+      </if>
+      <if test="valid != null " >
+        and valid = #{valid}
+      </if>
+      <if test="parentCode != null and parentCode !=''" >
+        and parent_code = #{parentCode}
+      </if>
+    </where>
+  </sql>
+
+
+  <sql id="Base_Column_List" >
+    id, `type`, code, `value`, discription, rank, valid, create_time, update_time, parent_code
+  </sql>
+  <select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from system_dictionaries
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="delete" parameterType="java.lang.String" >
+    delete from system_dictionaries
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="save" parameterType="com.platform.cfs.entity.SystemDictionaries" >
+    insert into system_dictionaries
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        `type`,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="value != null" >
+        `value`,
+      </if>
+      <if test="discription != null" >
+        discription,
+      </if>
+      <if test="rank != null" >
+        rank,
+      </if>
+      <if test="valid != null" >
+        valid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="parentCode != null" >
+        parent_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="discription != null" >
+        #{discription,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null" >
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentCode != null" >
+        #{parentCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="com.platform.cfs.entity.SystemDictionaries" >
+    update system_dictionaries
+    <set >
+      <if test="type != null" >
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        `value` = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="discription != null" >
+        discription = #{discription,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null" >
+        rank = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="valid != null" >
+        valid = #{valid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentCode != null" >
+        parent_code = #{parentCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

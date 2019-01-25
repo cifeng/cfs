@@ -1,15 +1,21 @@
 package com.platform.cfs.config.database;
 
-
-import tk.mybatis.mapper.common.Mapper;
-import tk.mybatis.mapper.common.MySqlMapper;
+import java.util.List;
 
 /**
- * @ClassName BaseMapper
- * @Description 基础数据库服务
- * @author 刘非
- * @date 2019-01-14 18:17
+ *
+ * @param <T>
  */
-public interface BaseMapper<T> extends Mapper<T>, MySqlMapper<T> {
+public interface BaseMapper<T> {
+
+    List<T> queryByList(T t);
+
+    T queryById(Integer id);
+
+    int save(T t);
+
+    int update(T t);
+
+    int delete(T t);
 
 }

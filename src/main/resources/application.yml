@@ -1,9 +1,10 @@
 ## 基础配置: 
 server: 
-  context-path: /
   port: 8001
   tomcat: 
     uri-encoding: UTF-8
+  servlet:
+    context-path: /
     
 ## Spring配置:
 spring: 
@@ -35,8 +36,8 @@ spring:
     default-encoding: UTF-8
     host: smtp.163.com   
     port: 25
-    username: baihezhuo@163.com
-    password: baihezhuo17171
+    username: lmoran@163.com
+    password: bunenggaosuni
     properties: 
       mail:
         smtp: 
@@ -46,7 +47,7 @@ spring:
 druid: 
     type: com.alibaba.druid.pool.DruidDataSource
     master:
-        url: jdbc:mysql://192.168.1.148:3306/ebike?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+        url: jdbc:mysql://192.168.1.148:3306/ebike_v5?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
         driver-class-name: com.mysql.jdbc.Driver
         username: root
         password: Ebike_123456
@@ -66,7 +67,7 @@ druid:
         filters: stat,wall,slf4j
         useGlobalDataSourceStat: true
     slave: 
-        url: jdbc:mysql://192.168.1.148:3306/ebike?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+        url: jdbc:mysql://192.168.1.148:3306/ebike_v5?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
         driver-class-name: com.mysql.jdbc.Driver
         username: root
         password: Ebike_123456
