@@ -1,0 +1,110 @@
+## 基础配置: 
+server: 
+  context-path: /
+  port: 8001
+  tomcat: 
+    uri-encoding: UTF-8
+    
+## Spring配置:
+spring: 
+  http: 
+    encoding:
+      charset: UTF-8 
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL      
+#  redis:
+#    pool:
+#      min-idle: 100
+#      max-idle: 100
+#      max-wait: -1
+#      max-active: 1000
+#    timeout: 6000
+#    cluster:
+#      max-redirects: 1000
+#      nodes:
+#        - 192.168.1.115:7001
+#        - 192.168.1.115:7002
+#        - 192.168.1.115:7003
+#        - 192.168.1.115:7004
+#        - 192.168.1.115:7005
+#        - 192.168.1.115:7006
+
+  mail:
+    default-encoding: UTF-8
+    host: smtp.163.com   
+    port: 25
+    username: baihezhuo@163.com
+    password: baihezhuo17171
+    properties: 
+      mail:
+        smtp: 
+          auth: true
+          timeout: 30000
+                
+druid: 
+    type: com.alibaba.druid.pool.DruidDataSource
+    master:
+        url: jdbc:mysql://192.168.1.148:3306/ebike?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: Ebike_123456
+        initialSize: 5
+        minIdle: 1
+        #maxIdle: 10
+        maxActive: 100
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: SELECT 1 FROM DUAL
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        filters: stat,wall,slf4j
+        useGlobalDataSourceStat: true
+    slave: 
+        url: jdbc:mysql://192.168.1.148:3306/ebike?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: Ebike_123456
+        initialSize: 5
+        minIdle: 1
+        #maxIdle: 10
+        maxActive: 100
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: SELECT 1 FROM DUAL
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        filters: stat,wall,slf4j
+        useGlobalDataSourceStat: true
+        
+mybatis:
+    type-aliases-package: com.antsoft.model
+    mapper-locations: classpath:com/platform/cfs/mapping/*.xml
+
+logging:
+    level:
+        tk.mybatis: TRACE  
+        
+#mapper: 
+#    mappers:
+#        - com.xxx.xxx.BaseMapper
+#    not-empty: false
+#    identity: MYSQL
+
+pagehelper: 
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql      
+      
+      
+     
