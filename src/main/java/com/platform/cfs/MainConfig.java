@@ -4,19 +4,18 @@
 package com.platform.cfs;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
- * <B>系统名称：</B>EES<BR>
- * <B>模块名称：</B>EES-SYS<BR>
- * <B>中文类名：</B>MainConfig<BR>
- * <B>概要说明：</B>MainConfig<BR>
- * @author bhz
- * @since 2017年2月8日 下午1:28:48
+ * @ClassName MainConfig
+ * @Description 配置文件入口
+ * @author 刘非
+ * @date 2019-01-29 14:12
  */
-@EnableWebMvc
+@EnableAutoConfiguration // 使用这个注解会从properties和yml中读取ViewResolve的配置 使用 @EnableWebMvc 注解需要显示用@bean编码方式配置ViewResolve
 @Configuration
 @ComponentScan({"com.platform.cfs.mapper.*"})
 @MapperScan(basePackages = "com.platform.cfs.mapper")

@@ -175,7 +175,12 @@
 			<artifactId>connector-java</artifactId>
 			<version>8.0.11</version>
 		</dependency>
-
+		<!--开启热部署-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
 
 
   	</dependencies>
@@ -248,7 +253,14 @@
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
-
+			<!--实现热部署-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+						<fork>true</fork>
+				</configuration>
+			</plugin>
 
 
 

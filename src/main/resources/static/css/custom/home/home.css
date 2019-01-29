@@ -1,0 +1,141 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+body{
+	background: #ebf7fc;
+}
+.shell{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+/* 头部导航 */
+.shell-navTop{
+	width: 100%;
+	height: 50px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	font-family: "微软雅黑";
+}
+.navTop-left{
+	width: 230px;
+	background: #367fa9;
+	float: left;
+	width: 230px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 20px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+
+.navTop-right{
+	width: 100%;
+	height: 100%;
+	color: #fff;
+	padding-left: 230px;
+	background: #3c8dbc;
+	box-sizing: border-box;
+	font-family: "微软雅黑";
+	text-align: right;
+	line-height: 50px;
+}
+.navTop-right i{
+	position: absolute;
+	top: 0px;
+
+}
+.navTop-right-name{
+	margin-right: 20px;
+}
+.navTop-right-out{
+	cursor: pointer;
+	margin-right: 20px;
+}
+/* 左侧导航 */
+.shell-navLeft{
+	width: 230px;
+	height: 100%;
+	background: #222d32;
+	position: fixed;
+	left: 0;
+	top: 0;
+	color: #fff;
+	z-index: 99;
+}
+.shell-navLeft a{
+	text-decoration: none;
+	color: #fff;
+}
+.navLeft-first{
+	margin-top: 50px;
+	font-size: 16px;
+}
+.navLeft-first>li{
+	width: 100%;
+	cursor: pointer;
+}
+.navLeft-first>li>p{
+	font-family: "微软雅黑";
+	height: 37px;
+	background: #222d32;
+	padding-left: 20px;
+	box-sizing: border-box;
+	line-height: 37px;
+}
+.navLeft-first>li>ul{
+	display: none;
+}
+.navLeft-first>li>ul>li{
+	width: 100%;
+	height: 30px;
+	background:#2c3b41;
+	padding-left:45px;
+	box-sizing: border-box;
+	line-height: 30px;
+	font-family: "微软雅黑";
+}
+
+/* 内容 */
+.shell-content{
+	width: 80%;
+	height: 900px;
+	position: fixed;
+	left: 240px;
+	top: 60px;
+	box-sizing: border-box;
+	margin:0 10px;
+	/* background: pink; */
+	/* border: 1px solid red; */
+	min-width: 1024px;
+}
+.icon-Raidobox-weixuan{
+	font-size: 10px !important;
+}
+.icon-shouye{
+	font-size: 18px !important;
+}
+@media screen and (max-width: 1300px){
+	.shell-content{
+		width: 75%;
+	}
+}
+@media screen and (max-width: 1100px){
+	.shell-content{
+		width: 70%;
+	}
+}
+@media screen and (max-width: 900px){
+	.shell-content{
+		width: 60%;
+	}
+
+}

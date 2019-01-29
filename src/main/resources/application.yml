@@ -14,7 +14,7 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-    default-property-inclusion: NON_NULL      
+    default-property-inclusion: NON_NULL
 #  redis:
 #    pool:
 #      min-idle: 100
@@ -43,6 +43,9 @@ spring:
         smtp: 
           auth: true
           timeout: 30000
+  mvc:
+    view:
+      suffix: .html
                 
 druid: 
     type: com.alibaba.druid.pool.DruidDataSource

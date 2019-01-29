@@ -1,0 +1,67 @@
+.list-select{
+	width: 100%;
+	border: 1px solid #adadad;
+	border-radius: 3px;
+	/*margin: 10px auto;*/
+	background: rgba(244, 245, 245, 0.8);
+	-webkit-user-select: none; /* Chrome all / Safari all */
+	-moz-user-select: none; /* Firefox all */
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none; 
+}
+
+/*-------列表主体样式--------*/
+.list-select .list-body{
+	width: 100%;
+	padding: 2% 2%;
+}
+.list-body > div{
+	display: inline-block;
+	height: 230px;
+	overflow: auto;
+
+}
+.list-body .left-box, .list-body .right-box{
+	width: 44%;
+	border: 1px solid #ceadad;
+	border-radius: 3px;
+	background: #fff;
+}
+.list-body .center-box{
+	width: 10%;
+}
+
+/*-------列表项样式-------*/
+.list-body .item{
+	display: block;
+	text-align: left;
+	padding-left: 10px;
+	line-height: 24px;
+}
+.list-body .item:hover{
+	background: #e7e7e7;
+	cursor: pointer;
+}
+/*-------被选中的列表项--------*/
+.list-body .item-box .selected-item{
+	background:rgba(2, 255, 0, 0.25);
+}
+
+/*------中间选择按钮样式-------*/
+.list-body .center-box > button{
+	display: block;
+	color: #434343;
+    width: 50px;
+    height: 30px;
+    background: #fff;
+    font-size: 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 2px;
+    margin: 20px auto;
+}
+.list-body .center-box > button:hover{
+	background: #e7e7e7;
+    border-color: #ccc;
+    cursor: pointer;
+}
