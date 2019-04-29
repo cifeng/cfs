@@ -4,7 +4,7 @@ document.write('<link rel="stylesheet" href="/css/bootstrap-table.min.css">');  
 document.write('<link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css" >');//日期插件
 document.write('<link rel="stylesheet" href="/css/sweetalert.css">');                 //广告系统使用的提示框
 document.write('<link rel="stylesheet" href="/css/jquery-confirm.min.css" >');        //alert、confirm、loding提示框
-document.write('<link rel="stylesheet" href="/css/bootstrapValidator.min.css" >');    //表单验证插件
+document.write('<link rel="stylesheet" href="/css/bootstrapValidator.css" >');    //表单验证插件
 document.write('<link rel="stylesheet" href="/css/bootstrap-ztree.css" >');           //树形列表或下拉框
 document.write('<link rel="stylesheet" href="/css/bootstrap-switch.min.css" >');      //开关插件
 document.write('<link rel="stylesheet" href="/css/daterangepicker.min.css" >');       //时间区间
@@ -28,10 +28,10 @@ document.write('<script type="text/javascript" src="/js/just-tip.js"></script>')
 document.write('<script type="text/javascript" src="/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>');      //日期插件
 document.write('<script type="text/javascript" src="/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>');//日期插件中文格式
 document.write('<script type="text/javascript" src="/js/bootstrap-table.min.js" charset="UTF-8"></script>');           //列表插件
-document.write('<script type="text/javascript" src="/js/bootstrap-table-zh-CN.min.js" charset="UTF-8"></script>');     //列表插件中文格式
+document.write('<script type="text/javascript" src="/js/bootstrap-table-zh-CN.js" charset="UTF-8"></script>');     //列表插件中文格式
 document.write('<script type="text/javascript" src="/js/jquery-confirm.min.js"></script>');                            //提示框插件
 document.write('<script type="text/javascript" src="/js/jquery.form.min.js"></script>');                               //表单提交插件
-document.write('<script type="text/javascript" src="/js/jquery-ui.min.js"></script>');                                 //jqueryUI
+document.write('<script type="text/javascript" src="/js/jquery-ui.js"></script>');                                 //jqueryUI
 document.write('<script type="text/javascript" src="/js/jquery-list.js"></script>');                                   //左右选择列表插件
 document.write('<script type="text/javascript" src="/js/jquery.daterangepicker.min.js"></script>');                    //日期区间插件
 document.write('<script type="text/javascript" src="/js/jquery.serializejson.min.js"></script>');                      //json序列化插件

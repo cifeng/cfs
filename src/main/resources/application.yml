@@ -50,7 +50,7 @@ spring:
 druid: 
     type: com.alibaba.druid.pool.DruidDataSource
     master:
-        url: jdbc:mysql://192.168.1.148:3306/ebike_v5?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+        url: jdbc:mysql://192.168.56.30:3306/member?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
         driver-class-name: com.mysql.jdbc.Driver
         username: root
         password: Ebike_123456
@@ -70,7 +70,7 @@ druid:
         filters: stat,wall,slf4j
         useGlobalDataSourceStat: true
     slave: 
-        url: jdbc:mysql://192.168.1.148:3306/ebike_v5?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+        url: jdbc:mysql://192.168.56.31:3306/member?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
         driver-class-name: com.mysql.jdbc.Driver
         username: root
         password: Ebike_123456

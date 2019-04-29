@@ -36,6 +36,7 @@
     	<mapper-spring-boot-starter.version>2.1.4</mapper-spring-boot-starter.version>
     	<pagehelper-spring-boot-starter.version>1.2.10</pagehelper-spring-boot-starter.version>
   		<druid.version>1.0.24</druid.version>
+		<poi-version>3.14</poi-version>
   	</properties>
 
 
@@ -172,8 +173,8 @@
 		<!--数据库jar-->
 		<dependency>
 			<groupId>mysql</groupId>
-			<artifactId>connector-java</artifactId>
-			<version>8.0.11</version>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.15</version>
 		</dependency>
 		<!--开启热部署-->
 		<dependency>
@@ -182,6 +183,11 @@
 			<optional>true</optional>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi-version}</version>
+		</dependency>
 
   	</dependencies>
 
@@ -216,8 +222,8 @@
 				<dependencies>
 					<dependency>
 						<groupId>mysql</groupId>
-						<artifactId>connector-java</artifactId>
-						<version>8.0.11</version>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>8.0.15</version>
 					</dependency>
 					<!--<dependency>
 						<groupId>mysql</groupId>

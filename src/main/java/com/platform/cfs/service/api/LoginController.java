@@ -21,4 +21,18 @@ public class LoginController {
     public String login(){
         return "login";
     }
+
+
+    /**
+     * 登录接口
+     * @return
+     */
+    @RequestMapping("/login")
+    public String signin(String username,String password){
+
+
+        return "login";
+    }
+
+
 }

@@ -1,5 +1,11 @@
 $(function(){
 	airBalloon('div.air-balloon');
+
+	$(".submit").click(function(){
+        var json =$('#loginForm').formToJson();
+        console.info(json);
+	});
+
 });
 
 /*
@@ -59,3 +65,5 @@ function getViewSize(){
     var viewH=de.clientHeight==0 ?  db.clientHeight : de.clientHeight;
     return Array(viewW,viewH);
 }
+
+
