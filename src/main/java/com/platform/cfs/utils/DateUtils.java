@@ -1,4 +1,4 @@
-package com.platform.cfs.common.util;
+package com.platform.cfs.utils;
 
 import org.apache.commons.lang3.StringUtils;
 

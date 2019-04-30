@@ -2,13 +2,12 @@ package com.platform.cfs.common.enums;
 
 public enum ResponseCode
 {
-    SUCCESS(0, "success", "成功"),
+    SUCCESS(200, "success", "成功"),
     SYSTEM_ERROR(1002, "system_error", "系统异常"),
     PARAM_ERROR(1003, "param_error", "参数异常"),
     SQL_ERROR(1004, "sql_error", "数据库异常"),
-    NEED_LOGIN(1005, "need_login", "请先登录!"),
+    NEED_LOGIN(1005, "need_login", "请先登录!");
 
-    SAMPLE_USER_NOT_EXIST(10001, "sample_user_not_exist", "用户不存在!");
 
     private int code;
     private String msg;

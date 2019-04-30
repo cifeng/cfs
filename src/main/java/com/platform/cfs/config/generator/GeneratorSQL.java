@@ -2,6 +2,7 @@ package com.platform.cfs.config.generator;
 
 
 import com.platform.cfs.entity.SystemDictionaries;
+import com.platform.cfs.entity.SystemUser;
 
 import java.lang.reflect.Field;
 import java.util.regex.Matcher;
@@ -25,16 +26,16 @@ public final class GeneratorSQL {
     private static boolean dateFlag = false;
 
     //如果返回主键 则开启它 设置为true
-    private static boolean useGeneratedKeys = true;
+    private static boolean useGeneratedKeys = false;
 
     //新增时是否忽略ID
-    private static boolean insertIdFlag = true;
+    private static boolean insertIdFlag = false;
     //表名
-    private static String tableName = "system_dictionaries";
+    private static String tableName = "system_user";
 
 
     public static void main(String[] args) throws Exception {
-        SystemDictionaries obj = new SystemDictionaries();
+        SystemUser obj = new SystemUser();
         // System.out.println("**************生成where条件sql*****************************************\n");
         reflectWhere(obj);
         // System.out.println("**************生成插入SQL语句*******************************************\n");

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.platform.cfs.mapper.SystemUserMapper">
+  <resultMap id="BaseResultMap" type="com.platform.cfs.entity.SystemUser">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="card_num" jdbcType="VARCHAR" property="cardNum" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="balance" jdbcType="VARCHAR" property="balance" />
+    <result column="frequency" jdbcType="INTEGER" property="frequency" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, username,password, `name`, card_num, mobile, balance, frequency, address, remark, `type`,
+    state, create_time, update_time, last_time
+  </sql>
+
+  <sql id="Base_Where_Clause">
+    <where>
+      1=1
+      <if test="id != null and id !=''" >
+        and id = #{id}
+      </if>
+      <if test="username != null and username !=''" >
+        and username = #{username}
+      </if>
+      <if test="name != null and name !=''" >
+        and name = #{name}
+      </if>
+      <if test="cardNum != null and cardNum !=''" >
+        and card_num = #{cardNum}
+      </if>
+      <if test="mobile != null and mobile !=''" >
+        and mobile = #{mobile}
+      </if>
+      <if test="balance != null and balance !=''" >
+        and balance = #{balance}
+      </if>
+      <if test="frequency != null " >
+        and frequency = #{frequency}
+      </if>
+      <if test="address != null and address !=''" >
+        and address = #{address}
+      </if>
+      <if test="remark != null and remark !=''" >
+        and remark = #{remark}
+      </if>
+      <if test="type != null " >
+        and type = #{type}
+      </if>
+      <if test="state != null " >
+        and state = #{state}
+      </if>
+      <if test="password != null and password !=''" >
+        and password = #{password}
+      </if>
+    </where>
+  </sql>
+
+  <insert id="save"  parameterType="com.platform.cfs.entity.SystemUser" >
+    insert into  system_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null and id !=''" >
+        id,
+      </if>
+      <if test="username != null and username !=''" >
+        username,
+      </if>
+      <if test="name != null and name !=''" >
+        name,
+      </if>
+      <if test="cardNum != null and cardNum !=''" >
+        card_num,
+      </if>
+      <if test="mobile != null and mobile !=''" >
+        mobile,
+      </if>
+      <if test="balance != null and balance !=''" >
+        balance,
+      </if>
+      <if test="frequency != null " >
+        frequency,
+      </if>
+      <if test="address != null and address !=''" >
+        address,
+      </if>
+      <if test="remark != null and remark !=''" >
+        remark,
+      </if>
+      <if test="type != null " >
+        type,
+      </if>
+      <if test="state != null " >
+        state,
+      </if>
+      <if test="createTime != null " >
+        create_time,
+      </if>
+      <if test="updateTime != null " >
+        update_time,
+      </if>
+      <if test="lastTime != null " >
+        last_time,
+      </if>
+      <if test="password != null and password !=''" >
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null and id !=''" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null and username !=''" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null and name !=''" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNum != null and cardNum !=''" >
+        #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null and mobile !=''" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null and balance !=''" >
+        #{balance,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null " >
+        #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="address != null and address !=''" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null and remark !=''" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null " >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="state != null " >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null " >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null " >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null " >
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null and password !=''" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="update" parameterType="com.platform.cfs.entity.SystemUser" >
+    update  system_user
+    <set>
+      <if test="username != null and username !=''" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null and name !=''" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNum != null and cardNum !=''" >
+        card_num = #{cardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null and mobile !=''" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null and balance !=''" >
+        balance = #{balance,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null " >
+        frequency = #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="address != null and address !=''" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null and remark !=''" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null " >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="state != null " >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null " >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null " >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null " >
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null and password !=''" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+  <!--根据id查询-->
+  <select id="queryById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from system_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <!--根据条件进行查询-->
+  <select id="queryByList" parameterType="com.platform.cfs.entity.SystemUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from system_user
+    <include refid="Base_Where_Clause" />
+  </select>
+
+
+
+
+</mapper>

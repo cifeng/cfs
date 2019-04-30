@@ -1,4 +1,4 @@
-package com.platform.cfs.common.util;
+package com.platform.cfs.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;

@@ -1,9 +1,9 @@
-package com.platform.cfs.common.util;
+package com.platform.cfs.utils;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
-import com.platform.cfs.common.exception.GenericBusinessException;
+import com.platform.cfs.common.exception.CommonException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -29,7 +29,7 @@ public class Jackson2Helper {
 		return null;
 	}
 
-	public static final <T> T parsingObject(String jsonString, Class<T> cls) throws GenericBusinessException
+	public static final <T> T parsingObject(String jsonString, Class<T> cls) throws CommonException
 	{
 		if (StringUtils.isBlank(jsonString) || null == cls) {
 			return null;
@@ -38,26 +38,26 @@ public class Jackson2Helper {
 		try {
 			return mapper.readValue(jsonString, cls);
 		} catch (JsonParseException e) {
-			throw new GenericBusinessException(e);
+			throw new CommonException(e);
 		} catch (JsonMappingException e) {
-			throw new GenericBusinessException(e);
+			throw new CommonException(e);
 		} catch (IOException e) {
-			throw new GenericBusinessException(e);
+			throw new CommonException(e);
 		}
 	}
 	
-	public static final JsonNode parsingObject(String jsonString) throws GenericBusinessException {
+	public static final JsonNode parsingObject(String jsonString) throws CommonException {
 		if (StringUtils.isBlank(jsonString)) {
 			return null;
 		}
 		try {
 			return mapper.readTree(jsonString);
 		} catch (JsonParseException e) {
-			throw new GenericBusinessException(e);
+			throw new CommonException(e);
 		} catch (JsonMappingException e) {
-			throw new GenericBusinessException(e);
+			throw new CommonException(e);
 		} catch (IOException e) {
-			throw new GenericBusinessException(e);
+			throw new CommonException(e);
 		}
 	}
 

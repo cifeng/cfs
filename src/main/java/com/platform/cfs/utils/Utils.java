@@ -1,4 +1,4 @@
-package com.platform.cfs.common.util;
+package com.platform.cfs.utils;
 
 import java.io.File;
 import java.net.URLEncoder;

@@ -287,7 +287,7 @@ function loginInValid(){
             OK: {
                 text: '确定',
                 action: function () {
-                    porsche.toLogin();
+                    cfs.toLogin();
                 }
             }
         }

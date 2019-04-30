@@ -174,7 +174,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.15</version>
+			<version>5.1.34</version>
 		</dependency>
 		<!--开启热部署-->
 		<dependency>
@@ -220,16 +220,16 @@
 					<verbose>true</verbose>
 				</configuration>
 				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>8.0.15</version>
-					</dependency>
 					<!--<dependency>
 						<groupId>mysql</groupId>
 						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.34</version>
+						<version>8.0.15</version>
 					</dependency>-->
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.34</version>
+					</dependency>
 				</dependencies>
 			</plugin>
 

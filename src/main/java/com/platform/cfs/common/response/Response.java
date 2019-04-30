@@ -1,5 +1,7 @@
 package com.platform.cfs.common.response;
 
+import com.platform.cfs.common.enums.ResponseCode;
+
 public class Response<T> {
     private Integer code;
     private T data;
@@ -67,7 +69,7 @@ public class Response<T> {
     }
 
     public boolean isSuccess() {
-        return this.code.intValue() == 0;
+        return this.code.intValue() == ResponseCode.SUCCESS.getCode();
     }
 
     public String toString()

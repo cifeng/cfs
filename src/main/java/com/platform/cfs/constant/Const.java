@@ -77,4 +77,14 @@ public final class Const {
     /** 操作人：系统(初始化) */
     public static final String SYS_INIT= "SYSINT";
 
+    /** 数据：无效 */
+    public static final Integer DATA_INVALID = 0;
+
+    /** 数据：有效 */
+    public static final Integer DATA_EFFECTIVE = 1;
+
+    /** session缓存 */
+    public static final String SYSTEM_SESSION = "cfs_user";
+
+
 }

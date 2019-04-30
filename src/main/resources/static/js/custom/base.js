@@ -1,9 +1,9 @@
-var porsche={
+var cfs={
 	/*Json 工具类*/
 	isJson:function(str){
 		var obj = null; 
 		try{
-			obj = porsche.paserJson(str);
+			obj = cfs.paserJson(str);
 		}catch(e){
 			return false;
 		}
@@ -17,7 +17,7 @@ var porsche={
 
 	/*重新登录页面*/
 	toLogin:function(){
-		window.top.location= "/backstage/login";
+		window.top.location= "/";
 	},
 	checkLogin:function(data){//检查是否登录超时
 		if(data.logoutFlag){
@@ -40,7 +40,7 @@ var porsche={
                 async:isAsync==false?isAsync:true,
                 success:function(data){
                     //坚持登录
-                    if(!porsche.checkLogin(data)){
+                    if(!cfs.checkLogin(data)){
                         return false;
                     }
                     if($.isFunction(callback)){
@@ -57,7 +57,7 @@ var porsche={
                     try{
                         var data = $.parseJSON(response.responseText);
                         //检查登录
-                        if(!porsche.checkLogin(data)){
+                        if(!cfs.checkLogin(data)){
                             return false;
                         }else{
                             alertUseMsgFn( data.msg || "请求出现异常,请联系管理员");
@@ -87,7 +87,7 @@ var porsche={
 			 		try{
 			 			var data = $.parseJSON(response.responseText);
 				 		//检查登录
-				 		if(!porsche.checkLogin(data)){
+				 		if(!cfs.checkLogin(data)){
 				 			return false;
 				 		}else{
 					 		alertUseMsgFn( data.msg || "请求出现异常,请联系管理员");
@@ -101,13 +101,13 @@ var porsche={
 			 	
 			 	}
 			 }
-			 porsche.ajaxSubmit(form,option);
+			 cfs.ajaxSubmit(form,option);
 	},
 	saveForm:function(form,callback){
 		if(form.form('validate')){
 			//ajax提交form
-			porsche.submitForm(form,function(data){
-				porsche.closeProgress();
+			cfs.submitForm(form,function(data){
+				cfs.closeProgress();
 			 	if(data.success){
 			 		if(callback){
 				       	callback(data);

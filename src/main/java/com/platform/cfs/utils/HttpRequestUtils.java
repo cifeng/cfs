@@ -1,4 +1,4 @@
-package com.baidu.platform.idc.web.common.util;
+package com.platform.cfs.utils;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;

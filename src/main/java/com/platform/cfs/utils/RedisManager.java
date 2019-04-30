@@ -1,9 +1,6 @@
-package com.platform.cfs.common.util;
+package com.platform.cfs.utils;
 
-import com.alibaba.fastjson.parser.ParserConfig;
-import com.platform.cfs.common.util.SerializerUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -22,7 +19,7 @@ public class RedisManager {
 //        ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
     }
 
-    @Autowired
+    //@Autowired
     private JedisPool jedisPool;
 
     public Long del(String key) {

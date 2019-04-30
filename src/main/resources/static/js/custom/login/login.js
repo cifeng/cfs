@@ -3,7 +3,24 @@ $(function(){
 
 	$(".submit").click(function(){
         var json =$('#loginForm').formToJson();
-        console.info(json);
+        cfs.ajaxPostJson("/login",json,false,function(data){
+        	if(data.code!=200){
+				$(".error_info").show("fast",function(){
+                    $(this).text(data.msg);
+                });
+				setTimeout(function(){
+                    $(".error_info").hide("slow",function(){
+                    	$(this).text("");
+					});
+				},3000);
+
+			}else{
+        		// 跳转到主页
+				window.location.href="/home";
+			}
+
+		},true);
+
 	});
 
 });

@@ -1,4 +1,4 @@
-package com.platform.cfs.common.util;
+package com.platform.cfs.utils;
 
 import com.platform.cfs.common.response.Response;
 import com.platform.cfs.common.response.ResponseUtil;
