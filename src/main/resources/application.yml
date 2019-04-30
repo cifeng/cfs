@@ -15,6 +15,15 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
     default-property-inclusion: NON_NULL
+  thymeleaf:
+    cache: false
+    check-template: true
+    servlet:
+      content-type: text/html
+    encoding: UTF-8
+    mode: HTML
+    prefix: classpath:/static/page/
+    suffix: .html
 #  redis:
 #    pool:
 #      min-idle: 100

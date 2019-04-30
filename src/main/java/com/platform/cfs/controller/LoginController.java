@@ -3,7 +3,9 @@ package com.platform.cfs.controller;
 import com.platform.cfs.common.response.Response;
 import com.platform.cfs.common.response.ResponseUtil;
 import com.platform.cfs.constant.Const;
+import com.platform.cfs.entity.SystemUser;
 import com.platform.cfs.service.ILoginService;
+import com.platform.cfs.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,6 +54,44 @@ public class LoginController extends BaseController{
         }
         return response;
     }
+
+    @RequestMapping("/home")
+    public String home(HttpServletRequest request){
+        SystemUser user = (SystemUser)request.getSession().getAttribute(Const.SYSTEM_SESSION);
+        if(Utils.isNull(user)){
+            return "redirect:/";
+        }
+        return "home";
+    }
+
+
+    @RequestMapping("/getloginname")
+    @ResponseBody
+    public Response getLoginName(HttpServletRequest request){
+        SystemUser user = (SystemUser)request.getSession().getAttribute(Const.SYSTEM_SESSION);
+        if(Utils.isNotNull(user)){
+            String name = user.getName();
+            if(Utils.isEmpty(name)){
+                name = user.getUsername();
+            }
+            if(Utils.isEmpty(name)){
+                name = user.getMobile();
+            }
+
+            return ResponseUtil.buildResponse(name);
+        }
+        return ResponseUtil.buildErrorResponse();
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().removeAttribute(Const.SYSTEM_SESSION);
+        return "redirect:/";
+    }
+
+
+
+
 
 
 }

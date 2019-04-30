@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.platform.cfs.mapper.MenuMapper" >
+  <resultMap id="BaseResultMap" type="com.platform.cfs.entity.MenuEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="menu_function" property="menuFunction" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="sort_num" property="sortNum" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, menu_function, pid,url,icon,sort_num,create_time,update_time,
+   IFNULL( (select s.title from system_menu s where s.id=t.pid),'根节点') as pname
+  </sql>
+
+  <sql id="Base_Where_Clause" >
+    <where>
+      1 = 1
+      <if test="id != null">
+        and id=#{id}
+      </if>
+      <if test="title != null and title!=''">
+        and title like CONCAT('%',#{title},'%')
+      </if>
+      <if test="menuFunction != null and menuFunction!=''">
+        and menu_function=#{menuFunction}
+      </if>
+      <if test="pid != null ">
+        and pid=#{pid}
+      </if>
+      <if test="url != null and  url!=''">
+        and url like CONCAT('%',#{url},'%')
+      </if>
+      <if test="icon != null and  icon!=''">
+        and icon=#{icon}
+      </if>
+      <if test="sortNum != null">
+        and sort_num=#{sortNum}
+      </if>
+      <if test="createTime != null">
+        and create_time=#{createTime}
+      </if>
+      <if test="updateTime != null">
+        and update_time=#{updateTime}
+      </if>
+      <if test="pname != null and  pname!=''">
+        and  IFNULL( ( SELECT s.title FROM system_menu s WHERE s.id = t.pid),'根节点') like  CONCAT('%',#{pname},'%')
+      </if>
+
+    </where>
+  </sql>
+
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_menu t
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByMenu" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from system_menu t
+    where menu_function=#{menuFunction,jdbcType=INTEGER}
+    order by t.pid,t.sort_num
+  </select>
+
+
+  <select id="queryByList"  parameterType="Object" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from system_menu t
+    <if test="_parameter != null">
+      <include refid="Base_Where_Clause" />
+    </if>
+    order by pid,sort_num
+  </select>
+
+
+ <!-- 查询表总数，分页使用-->
+  <select id="queryByCount" resultType="int"  parameterType="Object" >
+    select count(1) from system_menu t
+    <if test="_parameter != null">
+      <include refid="Base_Where_Clause" />
+    </if>
+  </select>
+
+
+
+<!-- 物理删除，批量删除-->
+  <delete id="deleteByBatch"  >
+    delete from  system_menu where id in
+    <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+  <!-- 插入-->
+  <insert id="insertSelective" useGeneratedKeys="true"  keyProperty="id" parameterType="com.platform.cfs.entity.MenuEntity" >
+    insert into system_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="menuFunction != null" >
+        menu_function,
+      </if>
+      <if test="pid != null" >
+      pid,
+      </if>
+      <if test="icon != null and icon!=''" >
+        icon,
+      </if>
+      <if test="url != null and url!=''" >
+        url,
+      </if>
+      <if test="sortNum != null" >
+        sort_num,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+
+      <if test="title != null and title!=''" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="menuFunction != null" >
+        #{menuFunction,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null and icon!=''" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null and url!=''" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNum != null" >
+        #{sortNum,jdbcType=INTEGER},
+      </if>
+
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.platform.cfs.entity.MenuEntity" >
+    update system_menu
+    <set >
+      <if test="title != null and title!=''" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="menuFunction != null" >
+        menu_function = #{menuFunction,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="sortNum != null" >
+        sort_num=#{sortNum,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null and icon!=''" >
+        icon=#{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null and url!=''" >
+       url= #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time=#{createTime},
+      </if>
+      <if test="updateTime != null" >
+        update_time=#{updateTime},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

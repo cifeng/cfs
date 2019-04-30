@@ -1,19 +1,12 @@
 $(function(){
     init();
     $("#logout_id").click(function(){
-        $.ajax({
-            url : "/backstage/logout",
-            success : function(data) {
-                window.location.href=data;
-            },
-            error : function(XMLHttpRequest, textStatus, errorThrown) {
-            }
-        });
+        window.location.href="/logout";
     });
 });
 function init(){
     $.ajax({
-        url : "/backstage/authority/v1/menulist",
+        url : "/menu/menulist",
         success : function(data) {
             var str="";
             //获取数据遍历得到第一层
@@ -38,27 +31,17 @@ function init(){
     });
     //获取用户名
     $.ajax({
-        url : "/backstage/getloginname",
+        url : "/getloginname",
         success : function(data) {
-            if(data.code==0){
-                $("#userName_id").text(data.data.name);
+            if(data.code==200){
+                $("#userName_id").text(data.data);
             }
         },
         error : function(XMLHttpRequest, textStatus, errorThrown) {
         }
     });
 
-    //获取当前环境
-    $.ajax({
-        url : "/backstage/getenv",
-        success : function(data) {
-            if(data.code==0){
-                $("#env").html(data.data);
-            }
-        },
-        error : function(XMLHttpRequest, textStatus, errorThrown) {
-        }
-    });
+
 
 
 }

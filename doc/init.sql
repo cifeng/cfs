@@ -36,5 +36,19 @@ CREATE TABLE `system_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE `system_menu`;
+CREATE TABLE `system_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `title` varchar(50) DEFAULT NULL COMMENT '标题',
+  `menu_function` int(11) DEFAULT NULL COMMENT '已废弃，菜单还是功能点，菜单为1，功能点为2',
+  `pid` int(11) DEFAULT NULL COMMENT '父级id',
+  `pname` varchar(50) DEFAULT NULL COMMENT '用来存放父级菜单名称',
+  `url` varchar(500) DEFAULT NULL COMMENT '跳转的URL',
+  `icon` varchar(200) DEFAULT NULL COMMENT '图标，这块可以存类样式，后续配置一些固定的模板图标',
+  `sort_num` int(11) DEFAULT NULL COMMENT '排序使用的字段',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 

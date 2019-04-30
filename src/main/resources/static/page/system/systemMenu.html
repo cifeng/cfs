@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>菜单管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- 公共css和js -->
+    <script type="text/javascript" src="/js/custom/communal-css-js.js"></script>
+    <!-- 自定义js -->
+    <script type="text/javascript" src="/js/custom/system/systemMenu.js"></script>
+
+
+</head>
+<body>
+<div class="menu">
+    <div class="menu-refer">
+        <form id="excelForm" name="excelForm" method="post" target="excelIFrame" enctype="multipart/form-data"  >
+        标题：<input type="text" id="search_title" name="title">
+        访问路径：<input type="text" id="search_url" name="url">
+        父级菜单：<input type="text" id="search_pname" name="pname">
+        <span id="search_id" class="menu-refer-seek"> <i class="icon iconfont icon-sousuo"></i>&nbsp;搜索</span>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <div id="toolbar">
+            <div class="menu-compile">
+                <span id="edit_id"><i class="icon iconfont icon-bianji" ></i>&nbsp;编辑</span>&nbsp;&nbsp;
+                <span id="save_id"><i class="icon iconfont icon-chuangjianshili" ></i>&nbsp;添加</span>&nbsp;&nbsp;
+                <span id="del_id"><i class="icon iconfont icon-shanchu"></i>&nbsp;删除</span>&nbsp;&nbsp;
+               <!-- <span id="export_id"><i class="icon iconfont icon-shangchuandaochu"></i>&nbsp;导出EXCEL</span>&nbsp;&nbsp;-->
+                <!--<span id="import_id"><i class="icon iconfont icon-xiazaidaoru" ></i>&nbsp;导入EXCEL</span>-->
+            </div>
+        </div>
+        <table id="authorityList">
+        </table>
+    </div>
+</div>
+<iframe id="excelIFrame" name="excelIFrame" style="display:none;"></iframe>
+<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal-dialog modal-lg"  role="document"  style="width:50%">
+            <div class="modal-content">
+                 <div class="modal-header text-center">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="x_close_id"><span aria-hidden="true">×</span></button>
+                        <span class="modal-header-title" id="modal_header_title_info" >添加菜单信息记录</span>
+                 </div>
+                 <div class="modal-body">
+                    <form id="form1" class="form-horizontal">
+                        <input type="hidden" id="id" name="id">
+                            <label for="menuFunction" class="col-sm-3 control-label">父级菜单：</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" id="menuFunction" name="menuFunction" value="1">
+                                <input type="hidden" id="pid" name="pid" >
+                             <div class="form-group">
+                                <!--<select class="form-control" id="pid" name="pid"  placeholder="请选择父级菜单"     required  data-bv-notempty-message="父级菜单不能为空" ></select>-->
+                                 <div class="input-group" style="width: 99%;margin-left: 5px;">
+                                     <input type="text" class="form-control" id="pid_select" name="pid_select"  placeholder="请选择父级菜单"     required  data-bv-notempty-message="父级菜单不能为空">
+                                     <span class="input-group-btn">
+                                        <button class="btn btn-default" onclick="showMenu()" id="menuBtn" type="button">选择父级菜单</button>
+                                     </span>
+                                 </div><!-- /input-group -->
+
+                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title" class="col-sm-3 control-label">菜单名称：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="title" name="title" placeholder="请输入菜单名称"
+                                       required  data-bv-notempty-message="菜单名称不能为空"
+                                       data-bv-stringlength="true" data-bv-stringlength-min="1"
+                                       data-bv-stringlength-max="50" data-bv-stringlength-message="长度最大为50个字符"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="form_group_url" >
+                            <label for="url" class="col-sm-3 control-label">访问路径：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="url" name="url" placeholder="请输入访问路径"
+                                       required  data-bv-notempty-message="访问路径不能为空"
+                                       data-bv-stringlength="true" data-bv-stringlength-min="1"
+                                       data-bv-stringlength-max="200" data-bv-stringlength-message="长度最大为200个字符"
+                                >
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="icon" class="col-sm-3 control-label">图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标：</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="icon" name="icon" placeholder="请输入图标"
+                                           required  data-bv-notempty-message="图标不能为空"
+                                           data-bv-stringlength="true" data-bv-stringlength-min="1"
+                                           data-bv-stringlength-max="50" data-bv-stringlength-message="长度最大为50个字符"
+                                    >
+                                    <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" onclick="selectImgFn(this)">选择图标</button>
+                        </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sortNum" class="col-sm-3 control-label">排序编号：</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="sortNum" name="sortNum" placeholder="请输入排序编号"
+                                       required  data-bv-notempty-message="排序编号不能为空"
+                                       data-bv-numeric="true" data-bv-numeric-message="请输入数值类型"
+                                       data-bv-stringlength="true" data-bv-stringlength-min="1"
+                                       data-bv-stringlength-max="11" data-bv-stringlength-message="长度最大为11个字符"
+                                >
+                            </div>
+                        </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_close_id">关闭</button>
+                        <button type="button" class="btn btn-primary" id="btn_save_id">保存</button>
+                        <button type="button" class="btn btn-primary" id="btn_edit_id">修改</button>
+                  </div>
+            </div>
+     </div>
+</div>
+
+
+<ul id="treeDemo" class="ztree" style="display: none;z-index: 10000;position: absolute;background-color: beige;border: 1px solid #ccc;height: 200px;min-width: 300px;overflow-y: auto;"></ul>
+
+
+
+</body>
+</html>

@@ -46,29 +46,8 @@ public class DataSourceConfiguration {
 		return slaveDataSource;
 	}
   
-	@Bean
-	public ServletRegistrationBean druidServlet() {
-  	
-		ServletRegistrationBean reg = new ServletRegistrationBean();
-		reg.setServlet(new StatViewServlet());
-//      reg.setAsyncSupported(true);
-		reg.addUrlMappings("/druid/*");
-		reg.addInitParameter("allow", "localhost");
-		reg.addInitParameter("deny","/deny");
-//      reg.addInitParameter("loginUsername", "bhz");
-//      reg.addInitParameter("loginPassword", "bhz");
-		LOGGER.info(" druid console manager init : {} ", reg);
-		return reg;
-  }
 
-	@Bean
-	public FilterRegistrationBean filterRegistrationBean() {
-		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-		filterRegistrationBean.setFilter(new WebStatFilter());
-		filterRegistrationBean.addUrlPatterns("/*");
-		filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico, /druid/*");
-		LOGGER.info(" druid filter register : {} ", filterRegistrationBean);
-		return filterRegistrationBean;
-	}
+
+
   
 }
