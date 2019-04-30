@@ -10,7 +10,7 @@ public interface BaseMapper<T> {
 
     List<T> queryByList(T t);
 
-    T queryById(Integer id);
+    T queryById(String id);
 
     int save(T t);
 

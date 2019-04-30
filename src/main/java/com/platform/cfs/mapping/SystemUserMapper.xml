@@ -228,7 +228,13 @@
     <include refid="Base_Where_Clause" />
   </select>
 
-
+  <update id="deleteByBatch"  >
+    update system_user set state = 0 where 1=1
+        and  id in
+    <foreach collection="array"  item="item" open="(" separator="," close=")"  >
+           #{item}
+    </foreach>
+  </update>
 
 
 </mapper>

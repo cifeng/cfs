@@ -6,17 +6,7 @@ public class Response<T> {
     private Integer code;
     private T data;
     private String msg;
-    private boolean visible = true;
 
-    public boolean isVisible()
-    {
-        return this.visible;
-    }
-
-    public void setVisible(boolean visible)
-    {
-        this.visible = visible;
-    }
 
     public Response() {
     }
@@ -27,12 +17,7 @@ public class Response<T> {
         this.msg = msg;
     }
 
-    public Response(Integer code, T data, String msg, boolean visible) {
-        this.code = code;
-        this.data = data;
-        this.msg = msg;
-        this.visible = visible;
-    }
+
 
     public Response(Integer code, T data) {
         this.code = code;

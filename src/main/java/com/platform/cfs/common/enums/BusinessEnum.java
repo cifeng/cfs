@@ -3,7 +3,8 @@ package com.platform.cfs.common.enums;
 public enum BusinessEnum
 {
 
-    LOGIN_ERROR(10002, "用户名或密码不正确!");
+    LOGIN_ERROR(10002, "用户名或密码不正确!"),
+    PK_ISNUL(10101, "主键不能为空");
 
     private int code;
     private String msg;

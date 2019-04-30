@@ -5,4 +5,5 @@ import com.platform.cfs.entity.SystemUser;
 
 public interface SystemUserMapper extends BaseMapper<SystemUser>{
 
+    Integer deleteByBatch(String[] array);
 }
