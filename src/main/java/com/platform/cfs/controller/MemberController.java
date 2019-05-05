@@ -9,12 +9,14 @@ import com.platform.cfs.service.IMemberService;
 import com.platform.cfs.utils.Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/member")
-@RestController
+@Controller
 public class MemberController extends BaseController {
 
     @Autowired
@@ -22,7 +24,13 @@ public class MemberController extends BaseController {
 
 
 
+    @RequestMapping("/input")
+    public String input(){
+        return "/member/member";
+    }
+
     @PostMapping("/save")
+    @ResponseBody
     public Response save(SystemUser user){
         return memberService.save(user);
     }
@@ -30,11 +38,13 @@ public class MemberController extends BaseController {
 
 
     @PostMapping("/edit")
+    @ResponseBody
     public Response edit(SystemUser user){
         return memberService.edit(user);
     }
 
     @PostMapping("/delete")
+    @ResponseBody
     public Response delete(String ids){
         if(StringUtils.isBlank(ids)||StringUtils.equals(",",ids)){
             return ResponseUtil.buildErrorResponse(BusinessEnum.PK_ISNUL);
@@ -44,6 +54,7 @@ public class MemberController extends BaseController {
 
 
     @PostMapping("/query")
+    @ResponseBody
     public Response queryById(String id){
         if(StringUtils.isBlank(id)){
             return ResponseUtil.buildErrorResponse(BusinessEnum.PK_ISNUL);
@@ -55,9 +66,9 @@ public class MemberController extends BaseController {
         return ResponseUtil.buildErrorResponse();
     }
 
-    @PostMapping("/list")
+    @RequestMapping("/list")
+    @ResponseBody
     public Response queryByList(SystemUser user){
-
         PageVO pageInfo = memberService.queryByList(user);
         return ResponseUtil.buildResponse(pageInfo);
     }

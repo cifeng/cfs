@@ -6,7 +6,7 @@ $(function(){
     $("#search_id").bind("click", initTable);
     //添加操作
     $("#save_id").click(function(){
-        $("#modal_header_title_info").text("添加菜单信息记录");
+        $("#modal_header_title_info").text("添加用户信息记录");
         $("#btn_save_id").show();
         $("#btn_edit_id").hide();
         $("#form_group_url").hide();//如果是新添加的数据则隐藏路径
@@ -80,7 +80,7 @@ $(function(){
         $('#form1').bootstrapValidator('validate');
         if($('#form1').data('bootstrapValidator').isValid()) {
             var formData = $('#form1').formToJson();
-            cfs.ajaxPostJson("/menu/edit",formData,false,function(data){
+            porsche.ajaxPostJson("/menu/edit",formData,false,function(data){
                 if (data.code == 0) {
                     $("#form1").resetForm();
                     $('#form1').data('bootstrapValidator').resetForm(true);//重置表格
@@ -111,7 +111,7 @@ $(function(){
                                 ids.push(res[i].id);
                             }
                             ids = ids.join(',');
-                            cfs.ajaxPostJson("/menu/del",{ids:ids},false, function(data){
+                            porsche.ajaxPostJson("/menu/del",{ids:ids},false, function(data){
                                 if("0" == data.code){
                                   initTable();
                                 }else{
@@ -208,7 +208,7 @@ function initTable(){
         //初始化Table
         table.Init = function () {
             $('#authorityList').bootstrapTable({
-                url: '/menu/querylist',         //请求后台的URL（*）
+                url: '/member/list',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 toolbar: '#toolbar',                //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -229,31 +229,35 @@ function initTable(){
                 detailView: false,                   //是否显示父子表
                 columns: [
                     {checkbox: true},
-                    {field: 'id',title: '菜单ID' ,visible:false},
-                    {field: 'pid',title: '父级菜单ID', visible:false},
-                    {field: 'title',title: '菜单名称'},
-                    {field: 'menuFunction',title: '菜单或功能点',  visible:false,
+                    {field: 'id',title: '会员ID' ,visible:false},
+                    {field: 'username',title: '用户名', visible:false},
+                    {field: 'name',title: '姓名'},
+                    {field: 'type',title: '账户类型',  visible:false,
                         formatter: function (value, row, index) {
                             if ("1" == value) {
-                                return "菜单"
-                            }else if ("2" == value) {
-                                return "功能点"
+                                return "普通账户"
+                            }else if ("5" == value) {
+                                return "VIP账户"
+                            }else if ("100" == value) {
+                                return "管理员"
+                            }else if ("101" == value) {
+                                return "超级管理员"
                             }else {
                                 return value;
                             }
                         }
                     },
-                    {field: 'pname',title: '父级菜单'},
-                    {field: 'url',title: '访问路径'},
-                    {field: 'icon',title: '图标'},
-                    {field: 'sortNum',title: '排序编号'},
+                    {field: 'cardNum',title: '卡号'},
+                    {field: 'mobile',title: '手机号'},
+                    {field: 'balance',title: '余额'},
+                    {field: 'frequency',title: '次数'},
                     {
                         field: 'createTime',title: '创建时间',
                         formatter: function (value) {
                             return changeDateFormat(value)
                         }
                     },{
-                    field: 'updateTime',title: '修改时间',
+                    field: 'lastTime',title: '最后消费时间',
                     formatter: function (value) {
                             return changeDateFormat(value)
                         }
@@ -264,8 +268,8 @@ function initTable(){
                 responseHandler: function(res) {
                     if(cfs.checkLogin(res)) {
                         return {
-                            "total": res.data.count,//总页数
-                            "rows": res.data.result   //数据
+                            "total": res.data.total,//总页数
+                            "rows": res.data.t   //数据
                         };
                     }
                 },
@@ -277,9 +281,9 @@ function initTable(){
             return   {
                 pageSize : params.limit, //每一页的数据行数，默认是上面设置的10(pageSize)
                 pageIndex : params.offset/params.limit+1, //当前页面,默认是上面设置的1(pageNumber)
-                "title": $("#search_title").val(),
-                "url": $("#search_url").val(),
-                "pname": $("#search_pname").val()
+                "mobile": $("#search_mobile").val(),
+                "cardNum": $("#search_cardNum").val(),
+                "name": $("#search_name").val()
             };
 
         };
