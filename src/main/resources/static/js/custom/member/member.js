@@ -10,8 +10,6 @@ $(function(){
         $("#btn_save_id").show();
         $("#btn_edit_id").hide();
         $("#form_group_url").hide();//如果是新添加的数据则隐藏路径
-        //initSelectFn();
-        selectNode(0)
         $('#myModal').modal("show");
 
     });
@@ -20,14 +18,14 @@ $(function(){
         $('#form1').bootstrapValidator('validate');
         if($('#form1').data('bootstrapValidator').isValid()) {
             var formData = $('#form1').formToJson();
-            cfs.ajaxPostJson("/menu/save",formData,false,function(data){
-                if (data.code == 0) {
+            cfs.ajaxPostJson("/member/save",formData,false,function(data){
+                if (data.code == 200) {
                     $("#form1").resetForm();
                     $('#form1').data('bootstrapValidator').resetForm(true);//重置表格
                     $('#myModal').modal("hide");
                     initTable();
                 } else {
-                    alertUseMsgFn("添加失败");
+                    alertUseMsgFn("添加失败,"+data.msg);
                 }
             },true);
         }
@@ -40,20 +38,11 @@ $(function(){
         if(res.length>0){
             if(res.length==1) {
                 //根据id将从后台将数据取出来
-                cfs.ajaxPostJson("/menu/querybyid?id=" + res[0].id, "", false, function (data) {
-                    //如果当前父级菜单是根节点则隐藏访问路径，否则显示路径
-                    if (data.data.pid == 0) {
-                        $("#form_group_url").hide();
-                    } else {
-                        $("#form_group_url").show();
-                    }
+                cfs.ajaxPostJson("/member/query?id=" + res[0].id, "", false, function (data) {
                     jsonToForm($("#form1"), data.data);
                     $("#modal_header_title_info").text("修改菜单信息记录");
                     $("#btn_save_id").hide();
                     $("#btn_edit_id").show();
-                    //设置下拉树的选中值并将数据的父级id放到隐藏域和显示input上
-                    //initSelectFn();
-                    selectNode(data.data.pid);
                     $('#myModal').modal("show");
                 });
             }else{
@@ -64,15 +53,7 @@ $(function(){
         }
     });
 
-    //根据出入的id设置选中下拉树节点
-    function selectNode(id){
-        var zTree_Menu = $.fn.zTree.getZTreeObj("treeDemo");
-        var node = zTree_Menu.getNodeByParam("id",id);
-        $("#pid").val(node.id);
-        $("#pid_select").val(node.title);
-        zTree_Menu.selectNode(node,true);//指定选中ID的节点
-        zTree_Menu.expandNode(node, true, false);//指定选中ID节点展开
-    }
+
 
 
     //修改保存操作
@@ -80,14 +61,14 @@ $(function(){
         $('#form1').bootstrapValidator('validate');
         if($('#form1').data('bootstrapValidator').isValid()) {
             var formData = $('#form1').formToJson();
-            porsche.ajaxPostJson("/menu/edit",formData,false,function(data){
-                if (data.code == 0) {
+            porsche.ajaxPostJson("/member/edit",formData,false,function(data){
+                if (data.code == 200) {
                     $("#form1").resetForm();
                     $('#form1').data('bootstrapValidator').resetForm(true);//重置表格
                     $('#myModal').modal("hide");
                     initTable();
                 } else {
-                    alertUseMsgFn("修改失败");
+                    alertUseMsgFn("修改失败,"+data.msg);
                 }
             },true);
         }
@@ -111,8 +92,8 @@ $(function(){
                                 ids.push(res[i].id);
                             }
                             ids = ids.join(',');
-                            porsche.ajaxPostJson("/menu/del",{ids:ids},false, function(data){
-                                if("0" == data.code){
+                            porsche.ajaxPostJson("/member/delete",{ids:ids},false, function(data){
+                                if("200" == data.code){
                                   initTable();
                                 }else{
                                     alertDeleteErrorFn();

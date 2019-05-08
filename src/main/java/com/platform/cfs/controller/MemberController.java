@@ -10,6 +10,7 @@ import com.platform.cfs.utils.Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,7 +32,7 @@ public class MemberController extends BaseController {
 
     @PostMapping("/save")
     @ResponseBody
-    public Response save(SystemUser user){
+    public Response save(@Validated SystemUser user){
         return memberService.save(user);
     }
 

@@ -21,7 +21,7 @@ $(function(){
         if($('#form1').data('bootstrapValidator').isValid()) {
             var formData = $('#form1').formToJson();
             cfs.ajaxPostJson("/menu/save",formData,false,function(data){
-                if (data.code == 0) {
+                if (data.code == 200) {
                     $("#form1").resetForm();
                     $('#form1').data('bootstrapValidator').resetForm(true);//重置表格
                     $('#myModal').modal("hide");
@@ -81,7 +81,7 @@ $(function(){
         if($('#form1').data('bootstrapValidator').isValid()) {
             var formData = $('#form1').formToJson();
             cfs.ajaxPostJson("/menu/edit",formData,false,function(data){
-                if (data.code == 0) {
+                if (data.code == 200) {
                     $("#form1").resetForm();
                     $('#form1').data('bootstrapValidator').resetForm(true);//重置表格
                     $('#myModal').modal("hide");
@@ -112,7 +112,7 @@ $(function(){
                             }
                             ids = ids.join(',');
                             cfs.ajaxPostJson("/menu/del",{ids:ids},false, function(data){
-                                if("0" == data.code){
+                                if("200" == data.code){
                                   initTable();
                                 }else{
                                     alertDeleteErrorFn();

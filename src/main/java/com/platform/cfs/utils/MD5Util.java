@@ -62,7 +62,7 @@ public class MD5Util {
     }
 
     public static void main(String[] args) {
-        String md5 = MD5Util.MD5("admin");
+        String md5 = MD5Util.MD5("123456");
         System.out.println(md5);
         String md52 = MD5Util.getMD5("123456");
         System.out.println(md52);
