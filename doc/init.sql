@@ -51,4 +51,13 @@ CREATE TABLE `system_menu` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-
+DROP TABLE `consume_record`;
+CREATE TABLE `consume_record` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `user_id` varchar(50) DEFAULT NULL COMMENT '用户id',
+  `balance` varchar(20) DEFAULT NULL COMMENT '消费金额',
+  `frequency` int(11) DEFAULT NULL COMMENT '消费次数',
+  `last_time` datetime DEFAULT NULL COMMENT '消费时间',
+  `discount` varchar(50) DEFAULT NULL COMMENT '折扣',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
