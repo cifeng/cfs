@@ -18,8 +18,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -57,7 +60,7 @@ public class MemberServiceImpl implements IMemberService {
             user.setLastTime(new Date());
         }
         log.info("修改会员====》写入数据库开始====》参数:{}", Jackson2Helper.toJsonString(user));
-        int num = systemUserMapper.save(user);
+        int num = systemUserMapper.update(user);
         log.info("修改会员《====写入数据库结束====》受影响行数:{}", num);
         if(num>0){
             return ResponseUtil.buildResponse();
@@ -68,8 +71,9 @@ public class MemberServiceImpl implements IMemberService {
     @Override
     public Response delete(String ids) {
         String[] array = ids.split(",");
+
         log.info("删除会员====》操作数据库开始====》参数:{}", Jackson2Helper.toJsonString(array));
-        Integer num = systemUserMapper.deleteByBatch(array);
+        Integer num = systemUserMapper.deleteByBatch( Arrays.stream(array).collect(Collectors.toList()));
         log.info("删除会员《====操作数据库结束《====受影响行数:{}", num);
         if(num>0){
             return ResponseUtil.buildResponse();

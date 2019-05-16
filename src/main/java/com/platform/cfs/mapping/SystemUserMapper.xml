@@ -25,7 +25,7 @@
 
   <sql id="Base_Where_Clause">
     <where>
-      1=1
+      state=1
       <if test="id != null and id !=''" >
         and id = #{id}
       </if>
@@ -33,13 +33,13 @@
         and username = #{username}
       </if>
       <if test="name != null and name !=''" >
-        and name = #{name}
+        and `name` like concat('%','${name}','%')
       </if>
       <if test="cardNum != null and cardNum !=''" >
-        and card_num = #{cardNum}
+        and card_num like concat('%','${card_num}','%')
       </if>
       <if test="mobile != null and mobile !=''" >
-        and mobile = #{mobile}
+        and mobile like concat('%','${mobile}','%')
       </if>
       <if test="balance != null and balance !=''" >
         and balance = #{balance}
@@ -54,7 +54,7 @@
         and remark = #{remark}
       </if>
       <if test="type != null " >
-        and type = #{type}
+        and `type` = #{type}
       </if>
       <if test="state != null " >
         and state = #{state}
@@ -229,11 +229,11 @@
   </select>
 
   <update id="deleteByBatch"  >
-    update system_user set state = 0 where 1=1
-        and  id in
-    <foreach collection="array"  item="item" open="(" separator="," close=")"  >
-           #{item}
+    update system_user set state = 0 where 1>2  or id in
+    <foreach collection="list"  item="item" open="(" separator="," close=")"  >
+      #{item}
     </foreach>
+
   </update>
 
 

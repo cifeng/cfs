@@ -61,7 +61,7 @@ $(function(){
         $('#form1').bootstrapValidator('validate');
         if($('#form1').data('bootstrapValidator').isValid()) {
             var formData = $('#form1').formToJson();
-            porsche.ajaxPostJson("/member/edit",formData,false,function(data){
+            cfs.ajaxPostJson("/member/edit",formData,false,function(data){
                 if (data.code == 200) {
                     $("#form1").resetForm();
                     $('#form1').data('bootstrapValidator').resetForm(true);//重置表格
@@ -92,7 +92,7 @@ $(function(){
                                 ids.push(res[i].id);
                             }
                             ids = ids.join(',');
-                            porsche.ajaxPostJson("/member/delete",{ids:ids},false, function(data){
+                            cfs.ajaxPostJson("/member/delete",{ids:ids},false, function(data){
                                 if("200" == data.code){
                                   initTable();
                                 }else{
