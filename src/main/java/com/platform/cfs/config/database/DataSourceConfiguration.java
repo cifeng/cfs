@@ -34,7 +34,7 @@ public class DataSourceConfiguration {
 	@ConfigurationProperties(prefix = "druid.master") 
 	public DataSource masterDataSource() throws SQLException{
 		DataSource masterDataSource = DataSourceBuilder.create().type(dataSourceType).build();
-		LOGGER.info("========MASTER: {}=========", masterDataSource);
+		LOGGER.debug("========MASTER: {}=========", masterDataSource);
 		return masterDataSource;
 	}
  
@@ -42,7 +42,7 @@ public class DataSourceConfiguration {
 	@ConfigurationProperties(prefix = "druid.slave")
 	public DataSource slaveDataSource(){
 		DataSource slaveDataSource = DataSourceBuilder.create().type(dataSourceType).build();
-		LOGGER.info("========SLAVE: {}=========", slaveDataSource);
+		LOGGER.debug("========SLAVE: {}=========", slaveDataSource);
 		return slaveDataSource;
 	}
   

@@ -37,6 +37,7 @@
     	<pagehelper-spring-boot-starter.version>1.2.10</pagehelper-spring-boot-starter.version>
   		<druid.version>1.0.24</druid.version>
 		<poi-version>3.14</poi-version>
+		<mybatis-plus-boot-starter.version>3.0.1</mybatis-plus-boot-starter.version>
   	</properties>
 
 
@@ -163,6 +164,13 @@
 	      <artifactId>mybatis-spring-boot-starter</artifactId>
 	      <version>${mybatis-spring.version}</version>
 	    </dependency>
+
+		<!--mybatisplus插件-->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>${mybatis-plus-boot-starter.version}</version>
+		</dependency>
 
 		<!--pagehelper 分页插件-->
 		<dependency>

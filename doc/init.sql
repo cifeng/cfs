@@ -1,5 +1,5 @@
 -- 数据字典表
-DROP TABLE `system_dictionaries`;
+DROP TABLE IF EXISTS `system_dictionaries`;
 CREATE TABLE `system_dictionaries` (
   `id` varchar(50) NOT NULL  COMMENT '主键',
   `type` varchar(50) DEFAULT NULL COMMENT '类型',
@@ -15,8 +15,8 @@ CREATE TABLE `system_dictionaries` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='数据字典表';
 
 
--- 数据字典表
-DROP TABLE `system_user`;
+-- 用户表
+DROP TABLE IF EXISTS `system_user`;
 CREATE TABLE `system_user` (
   `id` varchar(32) NOT NULL COMMENT '用户id',
   `username` varchar(50) DEFAULT NULL COMMENT '用户名称，默认同手机号一致',
@@ -36,7 +36,8 @@ CREATE TABLE `system_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE `system_menu`;
+-- 菜单表
+DROP TABLE IF EXISTS `system_menu`;
 CREATE TABLE `system_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `title` varchar(50) DEFAULT NULL COMMENT '标题',
@@ -50,8 +51,15 @@ CREATE TABLE `system_menu` (
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+-- 菜单数据
+INSERT INTO `system_menu` VALUES (1, '系统管理', 1, 0, NULL, NULL, 'icon iconfont icon-gonggeshitu', 99, NULL, '2019-05-08 16:09:27');
+INSERT INTO `system_menu` VALUES (2, '菜单管理', 1, 1, NULL, '/menu/querypage', 'icon iconfont icon-Raidobox-weixuan', 1, NULL, '2019-05-08 16:09:01');
+INSERT INTO `system_menu` VALUES (3, '会员管理', 1, 0, NULL, NULL, 'icon iconfont icon-jiaosequnti', 1, '2019-05-08 16:10:38', NULL);
+INSERT INTO `system_menu` VALUES (4, '用户管理', 1, 3, NULL, '/member/input', 'icon iconfont icon-zhucetianjiahaoyou', 1, '2019-05-08 16:11:55', NULL);
 
-DROP TABLE `consume_record`;
+
+-- 消费表
+DROP TABLE IF EXISTS `consume_record`;
 CREATE TABLE `consume_record` (
   `id` varchar(50) NOT NULL COMMENT '主键',
   `user_id` varchar(50) DEFAULT NULL COMMENT '用户id',

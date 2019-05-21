@@ -6,11 +6,11 @@ import java.util.List;
  *
  * @param <T>
  */
-public interface BaseMapper<T> {
+public interface BaseMapper<T> extends com.baomidou.mybatisplus.core.mapper.BaseMapper<T> {
 
     List<T> queryByList(T t);
 
-    T queryById(String id);
+     T queryById(String id);
 
     int save(T t);
 

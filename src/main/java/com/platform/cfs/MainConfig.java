@@ -24,7 +24,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableAutoConfiguration // 使用这个注解会从properties和yml中读取ViewResolve的配置 使用 @EnableWebMvc 注解需要显示用@bean编码方式配置ViewResolve
 @Configuration
 @ComponentScan({"com.platform.cfs.mapper.*"})
-@MapperScan(basePackages = "com.platform.cfs.mapper")
+@MapperScan({"com.platform.cfs.mapper","com.baomidou.mybatisplus.samples.quickstart.mapper"})
 @Slf4j
 public class MainConfig {
 

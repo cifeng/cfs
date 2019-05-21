@@ -14,7 +14,7 @@
         </commentGenerator>
         <!-- 数据库连接信息 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.56.30:3306/member?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Hongkong"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/member?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Hongkong"
                         userId="root"
                         password="root" />
         <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -41,7 +41,7 @@
 
         <!-- 目标表，如果有多个表就将此段拷贝分别配置 -->
 
-        <table  tableName="system_user" domainObjectName="SystemUser"
+        <table  tableName="consume_record" domainObjectName="ConsumeRecord"
                 enableCountByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" enableUpdateByExample="false"
                 enableSelectByPrimaryKey="true"
