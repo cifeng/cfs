@@ -33,9 +33,7 @@ public class LoginServiceImpl implements ILoginService {
         systemUser.setPassword(MD5Util.MD5(password));
         systemUser.setState(Const.DATA_EFFECTIVE);
         // 2 调用mapper验证
-        log.info("登录校验====》有效性验证开始====》参数:{}",Jackson2Helper.toJsonString(systemUser));
         List<SystemUser> list = systemUserMapper.queryByList(systemUser);
-        log.info("登录校验《====有效性验证结束《====结果:{}",Jackson2Helper.toJsonString(list));
         if(Utils.isNotEmpty(list)){
             return ResponseUtil.buildResponse(list.get(0));
         }

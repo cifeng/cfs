@@ -6,7 +6,7 @@ import java.util.List;
  *
  * @param <T>
  */
-public interface BaseMapper<T> extends com.baomidou.mybatisplus.core.mapper.BaseMapper<T> {
+public interface BaseMapper<T> {
 
     List<T> queryByList(T t);
 

@@ -12,95 +12,129 @@
   <sql id="Base_Column_List" >
     id, user_id, balance, frequency, last_time, discount
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <sql id="Base_Where_Clause">
+    <where>
+      1=1
+      <if test="id != null and id !=''" >
+        and id = #{id}
+      </if>
+      <if test="userId != null and userId !=''" >
+        and user_id = #{userId}
+      </if>
+      <if test="balance != null and balance !=''" >
+        and balance = #{balance}
+      </if>
+      <if test="frequency != null " >
+        and frequency = #{frequency}
+      </if>
+      <if test="discount != null and discount !=''" >
+        and discount = #{discount}
+      </if>
+
+      <if test="startTime != null and startTime!=''" >
+        and last_time <![CDATA[>=]]> #{startTime}
+      </if>
+      <if test="endTime != null and endTime!=''" >
+        and last_time <![CDATA[<=]]> #{endTime}
+      </if>
+
+    </where>
+  </sql>
+
+  <insert id="save"  parameterType="com.platform.cfs.entity.ConsumeRecord" >
+    insert into  consume_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null and id !=''" >
+        id,
+      </if>
+      <if test="userId != null and userId !=''" >
+        user_id,
+      </if>
+      <if test="balance != null and balance !=''" >
+        balance,
+      </if>
+      <if test="frequency != null " >
+        frequency,
+      </if>
+      <if test="lastTime != null " >
+        last_time,
+      </if>
+      <if test="discount != null and discount !=''" >
+        discount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null and id !=''" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null and userId !=''" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null and balance !=''" >
+        #{balance,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null " >
+        #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="lastTime != null " >
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discount != null and discount !=''" >
+        #{discount,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="update" parameterType="com.platform.cfs.entity.ConsumeRecord" >
+    update  consume_record
+    <set>
+      <if test="userId != null and userId !=''" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null and balance !=''" >
+        balance = #{balance,jdbcType=VARCHAR},
+      </if>
+      <if test="frequency != null " >
+        frequency = #{frequency,jdbcType=INTEGER},
+      </if>
+      <if test="lastTime != null " >
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discount != null and discount !=''" >
+        discount = #{discount,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+
+  <update id="edit" parameterType="com.platform.cfs.entity.ConsumeRecord" >
+    update  consume_record
+    <set>
+        user_id = #{userId,jdbcType=VARCHAR},
+        balance = #{balance,jdbcType=VARCHAR},
+        frequency = #{frequency,jdbcType=INTEGER},
+        discount = #{discount,jdbcType=VARCHAR},
+    </set>
+    where id = #{id}
+  </update>
+
+
+  <select id="queryById" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from consume_record
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from consume_record
-    where id = #{id,jdbcType=VARCHAR}
+
+  <select id="queryByList" resultMap="BaseResultMap" parameterType="com.platform.cfs.entity.ConsumeRecord" >
+    select
+    <include refid="Base_Column_List" />
+    from consume_record
+    <include refid="Base_Where_Clause" />
+  </select>
+  
+  <delete id="delete" parameterType="com.platform.cfs.entity.ConsumeRecord">
+    delete from consume_record where 1=2 or id = #{id}
   </delete>
-  <insert id="insert" parameterType="com.platform.cfs.entity.ConsumeRecord" >
-    insert into consume_record (id, user_id, balance, 
-      frequency, last_time, discount
-      )
-    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{balance,jdbcType=VARCHAR}, 
-      #{frequency,jdbcType=INTEGER}, #{lastTime,jdbcType=TIMESTAMP}, #{discount,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.platform.cfs.entity.ConsumeRecord" >
-    insert into consume_record
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="userId != null" >
-        user_id,
-      </if>
-      <if test="balance != null" >
-        balance,
-      </if>
-      <if test="frequency != null" >
-        frequency,
-      </if>
-      <if test="lastTime != null" >
-        last_time,
-      </if>
-      <if test="discount != null" >
-        discount,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="balance != null" >
-        #{balance,jdbcType=VARCHAR},
-      </if>
-      <if test="frequency != null" >
-        #{frequency,jdbcType=INTEGER},
-      </if>
-      <if test="lastTime != null" >
-        #{lastTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="discount != null" >
-        #{discount,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.platform.cfs.entity.ConsumeRecord" >
-    update consume_record
-    <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="balance != null" >
-        balance = #{balance,jdbcType=VARCHAR},
-      </if>
-      <if test="frequency != null" >
-        frequency = #{frequency,jdbcType=INTEGER},
-      </if>
-      <if test="lastTime != null" >
-        last_time = #{lastTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="discount != null" >
-        discount = #{discount,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.platform.cfs.entity.ConsumeRecord" >
-    update consume_record
-    set user_id = #{userId,jdbcType=VARCHAR},
-      balance = #{balance,jdbcType=VARCHAR},
-      frequency = #{frequency,jdbcType=INTEGER},
-      last_time = #{lastTime,jdbcType=TIMESTAMP},
-      discount = #{discount,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
+  
 </mapper>

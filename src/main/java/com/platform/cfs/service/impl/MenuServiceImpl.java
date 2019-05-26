@@ -88,9 +88,7 @@ public class MenuServiceImpl implements IMenuService{
         Integer num=0;
         if(Utils.isNotNull(entity)){
             entity.setCreateTime(new Date(System.currentTimeMillis()));
-            log.info("添加菜单开始 参数为："+entity.toString());
             num= menuMapper.insertSelective(entity);
-            log.info("添加菜单结束 受影响行数："+num);
         }
         return num;
     }
@@ -115,18 +113,14 @@ public class MenuServiceImpl implements IMenuService{
         Integer num=0;
         if(Utils.isNotNull(entity)){
             entity.setUpdateTime(new Date(System.currentTimeMillis()));
-            log.info("修改菜单数据开始 参数为："+entity.toString());
             num= menuMapper.updateByPrimaryKeySelective(entity);
-            log.info("修改菜单数据结束 受影响行数："+num);
         }
         return num;
     }
 
     @Override
     public MenuEntity queryById(Integer id) {
-        log.info("获取菜单对象开始 参数为："+id);
         MenuEntity entity  = menuMapper.selectByPrimaryKey(id);
-        log.info("获取菜单对象结束 结果为："+entity.toString());
         return entity;
     }
 

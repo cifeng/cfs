@@ -1,6 +1,7 @@
 package com.platform.cfs.config.generator;
 
 
+import com.platform.cfs.entity.ConsumeRecord;
 import com.platform.cfs.entity.SystemDictionaries;
 import com.platform.cfs.entity.SystemUser;
 
@@ -23,7 +24,7 @@ public final class GeneratorSQL {
     private static String id = "Base_Where_Clause";
 
     //如果想要生成日期类型的字段 则开启它 设置为true
-    private static boolean dateFlag = false;
+    private static boolean dateFlag = true;
 
     //如果返回主键 则开启它 设置为true
     private static boolean useGeneratedKeys = false;
@@ -31,11 +32,11 @@ public final class GeneratorSQL {
     //新增时是否忽略ID
     private static boolean insertIdFlag = false;
     //表名
-    private static String tableName = "system_user";
+    private static String tableName = "consume_record";
 
 
     public static void main(String[] args) throws Exception {
-        SystemUser obj = new SystemUser();
+        ConsumeRecord obj = new ConsumeRecord();
         // System.out.println("**************生成where条件sql*****************************************\n");
         reflectWhere(obj);
         // System.out.println("**************生成插入SQL语句*******************************************\n");

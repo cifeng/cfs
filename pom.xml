@@ -37,7 +37,6 @@
     	<pagehelper-spring-boot-starter.version>1.2.10</pagehelper-spring-boot-starter.version>
   		<druid.version>1.0.24</druid.version>
 		<poi-version>3.14</poi-version>
-		<mybatis-plus-boot-starter.version>3.0.1</mybatis-plus-boot-starter.version>
   	</properties>
 
 
@@ -165,12 +164,7 @@
 	      <version>${mybatis-spring.version}</version>
 	    </dependency>
 
-		<!--mybatisplus插件-->
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-boot-starter</artifactId>
-			<version>${mybatis-plus-boot-starter.version}</version>
-		</dependency>
+
 
 		<!--pagehelper 分页插件-->
 		<dependency>
@@ -201,17 +195,6 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>${poi-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate.validator</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>6.0.16.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.el</artifactId>
-			<version>3.0.1-b09</version>
 		</dependency>
 
 

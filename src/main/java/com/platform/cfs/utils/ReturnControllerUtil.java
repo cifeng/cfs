@@ -15,8 +15,8 @@ public class ReturnControllerUtil {
     public static final  String DELETE="DELETE";
     public static final  String SUBMIT="SUBMIT";
 
-    private static final Integer CODE_SUCCESS=0;
-    private static final Integer CODE_ERROR=1;
+    private static final Integer CODE_SUCCESS=200;
+    private static final Integer CODE_ERROR=1002;
 
     /**
      * @Title getCud

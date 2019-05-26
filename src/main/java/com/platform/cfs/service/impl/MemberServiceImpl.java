@@ -43,9 +43,7 @@ public class MemberServiceImpl implements IMemberService {
         if(Utils.isNotEmpty(user.getBalance())&&Utils.nulltoZero(user.getBalance())>0){
             user.setLastTime(new Date());
         }
-        log.info("创建会员====》写入数据库开始====》参数:{}", Jackson2Helper.toJsonString(user));
         int num = systemUserMapper.save(user);
-        log.info("创建会员《====写入数据库结束====》受影响行数:{}", num);
         if(num>0){
             return ResponseUtil.buildResponse();
         }
@@ -59,9 +57,7 @@ public class MemberServiceImpl implements IMemberService {
         if(Utils.isNotEmpty(user.getBalance())&&Utils.nulltoZero(user.getBalance())>0){
             user.setLastTime(new Date());
         }
-        log.info("修改会员====》写入数据库开始====》参数:{}", Jackson2Helper.toJsonString(user));
         int num = systemUserMapper.update(user);
-        log.info("修改会员《====写入数据库结束====》受影响行数:{}", num);
         if(num>0){
             return ResponseUtil.buildResponse();
         }
@@ -72,9 +68,7 @@ public class MemberServiceImpl implements IMemberService {
     public Response delete(String ids) {
         String[] array = ids.split(",");
 
-        log.info("删除会员====》操作数据库开始====》参数:{}", Jackson2Helper.toJsonString(array));
         Integer num = systemUserMapper.deleteByBatch( Arrays.stream(array).collect(Collectors.toList()));
-        log.info("删除会员《====操作数据库结束《====受影响行数:{}", num);
         if(num>0){
             return ResponseUtil.buildResponse();
         }
@@ -89,9 +83,7 @@ public class MemberServiceImpl implements IMemberService {
     @Override
     public PageVO queryByList(SystemUser user) {
         Page<PageInfo> pageInfo = PageHelper.startPage(user.getPageIndex(), user.getPageSize());
-        log.info("查询会员列表开始====》参数为:{}",Jackson2Helper.toJsonString(user));
         List<SystemUser> list = systemUserMapper.queryByList(user);
-        log.info("查询会员列表结束《====结果为:{}",Jackson2Helper.toJsonString(list));
         return new PageVO(pageInfo.getTotal(),list);
     }
 }

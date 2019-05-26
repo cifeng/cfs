@@ -1,6 +1,5 @@
 $(function(){
     initTable();//初始化表格
-    initSelectFn();//初始化下拉框组件
 
     //搜索操作
     $("#search_id").bind("click", initTable);
@@ -136,50 +135,6 @@ $(function(){
 
 
 });//jquery初始化方法end
-
-function initSelectFn(){
-    var  mydata=[];
-    cfs.ajaxPostJson("/menu/querylist",{},false,function(data){
-        var result={id:0,title:"根节点",pid:0};
-        mydata.push(result);
-        $.each(data.data.result,function(i,item){
-            item.url="";
-            mydata[i+1]=item
-        });
-        var setting = {
-            view: {
-                selectedMulti: false
-            },
-            data: {
-                simpleData: {
-                    enable: true,
-                    idKey: "id",    //设置节点唯一标识属性名称
-                    pIdKey: "pid"      //设置父节点唯一标识属性名称
-                },
-                key: {
-                    name: "title",//zTree 节点数据保存节点名称的属性名称
-                    title: "title"//zTree 节点数据保存节点提示信息的属性名称
-                }
-            },callback:{
-                onClick:function(e,root,item){
-                    $("#pid").val(item.id);
-                    $("#pid_select").val(item.title);
-                    //如果是根节点则隐藏路径，因为不需要设置路径，否则就显示路径input
-                    if(item.id==0){
-                        $("#form_group_url").hide();
-                    }else{
-                        $("#form_group_url").show();
-                    }
-                    hideMenu();
-                }
-            }
-        };
-        $.fn.zTree.init($("#treeDemo"), setting, mydata);
-    });
-
-
-}
-
 
 
 function initTable(){

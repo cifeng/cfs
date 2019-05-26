@@ -36,7 +36,7 @@
         and `name` like concat('%','${name}','%')
       </if>
       <if test="cardNum != null and cardNum !=''" >
-        and card_num like concat('%','${card_num}','%')
+        and card_num like concat('%','${cardNum}','%')
       </if>
       <if test="mobile != null and mobile !=''" >
         and mobile like concat('%','${mobile}','%')
