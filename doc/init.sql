@@ -36,6 +36,10 @@ CREATE TABLE `system_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `member`.`system_user` (`id`, `username`, `password`, `name`, `card_num`, `mobile`, `balance`, `frequency`, `address`, `remark`, `type`, `state`, `create_time`, `update_time`, `last_time`) VALUES ('1', 'admin', 'E10ADC3949BA59ABBE56E057F20F883E', '超级管理员', NULL, NULL, NULL, NULL, NULL, NULL, '101', '1', NULL, NULL, NULL);
+
+
+
 -- 菜单表
 DROP TABLE IF EXISTS `system_menu`;
 CREATE TABLE `system_menu` (
