@@ -59,10 +59,10 @@ spring:
 druid: 
     type: com.alibaba.druid.pool.DruidDataSource
     master:
-        url: jdbc:mysql://192.168.56.30:3306/member?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
+        url: jdbc:mysql://127.0.0.1:3306/member?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
         driver-class-name: com.mysql.jdbc.Driver
         username: root
-        password: root
+        password: 123456
         initialSize: 5
         minIdle: 1
         #maxIdle: 10
@@ -82,7 +82,7 @@ druid:
         url: jdbc:mysql://127.0.0.1:3306/member?characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useUnicode=true
         driver-class-name: com.mysql.jdbc.Driver
         username: root
-        password: root
+        password: 123456
         initialSize: 5
         minIdle: 1
         #maxIdle: 10
@@ -105,7 +105,9 @@ mybatis:
 
 logging:
     level:
-        tk.mybatis: TRACE  
+        #tk.mybatis: TRACE
+        com.platform.cfs.mapper: debug
+
         
 #mapper: 
 #    mappers:

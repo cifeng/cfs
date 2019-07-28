@@ -61,6 +61,7 @@ INSERT INTO `system_menu` VALUES (2, '菜单管理', 1, 1, NULL, '/menu/querypag
 INSERT INTO `system_menu` VALUES (3, '会员管理', 1, 0, NULL, NULL, 'icon iconfont icon-jiaosequnti', 1, '2019-05-08 16:10:38', NULL);
 INSERT INTO `system_menu` VALUES (4, '用户管理', 1, 3, NULL, '/member/input', 'icon iconfont icon-zhucetianjiahaoyou', 1, '2019-05-08 16:11:55', NULL);
 INSERT INTO `system_menu` VALUES (5, '消费管理', 1, 3, null, '/consume/input', 'icon iconfont icon-xiaofeimingxidan', 2, '2019-05-26 18:41:05', null);
+INSERT INTO `system_menu` VALUES (6, '消费查询', 1, 3, NULL, '/consume/record/input', 'icon iconfont icon-biaoge', 3, '2019-07-28 22:01:33', NULL);
 
 -- 消费表
 DROP TABLE IF EXISTS `consume_record`;

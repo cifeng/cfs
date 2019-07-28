@@ -168,9 +168,7 @@ $(function(){
     });
 
 
-    setTimeout(function(){
 
-    },500);
 
 
 });
@@ -376,13 +374,15 @@ function initTableByBaseQuestion() {
 
 //因为是关联表，为了避免页面渲染table出现问题只对table渲染一次，所有采用刷新的方式重新load数据
 function refreshFn(userId){
+    var startTime = $("#startTime_id").val();
+    var endTime = $("#endTime_id").val();
     var opt = {
         url: '/consume/list',
         silent: true,
         query:{
             "userId":userId,
-            "startTime":$("#startTime_id").val(),
-            "endTime": $("#endTime_id").val()
+            "startTime": startTime,
+            "endTime": endTime
         }
     };
 

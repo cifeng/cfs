@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>消费记录查询</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- 公共css和js -->
+    <script type="text/javascript" src="/js/custom/communal-css-js.js"></script>
+    <!-- 自定义js -->
+<script type="text/javascript" src="/js/custom/member/record.js"></script>
+<style>
+    .sum_span{
+        clear :left;
+        float: right;
+        margin-right: 10px;
+    }
+</style>
+</head>
+<body>
+<div >
+    <div class="content">
+        <div class="menu-refer">
+            <span  id="search_record_day" class="menu-refer-seek" style="padding: 0px;"> <i class="icon iconfont icon-ziyuan-xianxing"></i>&nbsp;查当天</span>
+            消费时间：<input  type="text" id="startTime_id"   class="create_time_begin" style="width: 15%;">
+            至：<input  type="text"  id="endTime_id"  class="create_time_end" style="width: 15%;">
+            <span  id="search_record_id" class="menu-refer-seek" style="padding: 0px;"> <i class="icon iconfont icon-sousuo"></i>&nbsp;搜索</span>
+            <span class="sum_span"></span>
+        </div>
+
+
+        <div class="table-responsive">
+        <!--消费记录表格-->
+        <table id="consumeRecordList">
+
+        </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
+

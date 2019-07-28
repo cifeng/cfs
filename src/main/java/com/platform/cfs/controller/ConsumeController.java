@@ -29,6 +29,10 @@ public class ConsumeController {
     }
 
 
+    @RequestMapping("/record/input")
+    public String queryInput(){
+        return "member/record";
+    }
 
     @ResponseBody
     @PostMapping("/save")
