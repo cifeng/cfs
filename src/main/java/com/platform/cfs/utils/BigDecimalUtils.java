@@ -17,6 +17,12 @@ public class BigDecimalUtils {
      * @return 减完的数
      */
     public static String subtract(String s1,String s2){
+        if(Utils.isEmpty(s1)){
+            s1 = "0";
+        }
+        if(Utils.isEmpty(s2)){
+            s2 = "0";
+        }
         BigDecimal b1 = new BigDecimal(s1);
         BigDecimal b2 = new BigDecimal(s2);
         return b1.subtract(b2).toPlainString();
@@ -29,6 +35,12 @@ public class BigDecimalUtils {
      * @return 加完的数
      */
     public static String add(String s1,String s2){
+        if(Utils.isEmpty(s1)){
+            s1 = "0";
+        }
+        if(Utils.isEmpty(s2)){
+            s2 = "0";
+        }
         BigDecimal b1 = new BigDecimal(s1);
         BigDecimal b2 = new BigDecimal(s2);
         return b1.add(b2).toPlainString();

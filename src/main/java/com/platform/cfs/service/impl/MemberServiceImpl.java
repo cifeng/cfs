@@ -3,6 +3,8 @@ package com.platform.cfs.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.platform.cfs.cloopen.Sms;
+import com.platform.cfs.cloopen.utils.SmsParam;
 import com.platform.cfs.common.response.Response;
 import com.platform.cfs.common.response.ResponseUtil;
 import com.platform.cfs.config.database.PageVO;
@@ -10,10 +12,7 @@ import com.platform.cfs.constant.Const;
 import com.platform.cfs.entity.SystemUser;
 import com.platform.cfs.mapper.SystemUserMapper;
 import com.platform.cfs.service.IMemberService;
-import com.platform.cfs.utils.Jackson2Helper;
-import com.platform.cfs.utils.KeyUtil;
-import com.platform.cfs.utils.MD5Util;
-import com.platform.cfs.utils.Utils;
+import com.platform.cfs.utils.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +31,9 @@ public class MemberServiceImpl implements IMemberService {
     @Autowired
     private SystemUserMapper systemUserMapper;
 
+    @Autowired
+    private Sms sms;
+
     @Override
     public Response save(SystemUser user) {
         user.setId(KeyUtil.generatorUUID());
@@ -45,6 +47,8 @@ public class MemberServiceImpl implements IMemberService {
         }
         int num = systemUserMapper.save(user);
         if(num>0){
+            SmsParam param  = new SmsParam(user.getName(),"充值",user.getBalance(),user.getBalance(),user.getMobile());
+            sms.send(param);
             return ResponseUtil.buildResponse();
         }
         return ResponseUtil.buildErrorResponse();
@@ -53,12 +57,16 @@ public class MemberServiceImpl implements IMemberService {
 
     @Override
     public Response edit(SystemUser user) {
+        SystemUser systemUser = queryById(user.getId());
         user.setUpdateTime(new Date());
         if(Utils.isNotEmpty(user.getBalance())&&Utils.nulltoZero(user.getBalance())>0){
             user.setLastTime(new Date());
         }
         int num = systemUserMapper.update(user);
         if(num>0){
+            String subtract = BigDecimalUtils.subtract(user.getBalance(), systemUser.getBalance());
+            SmsParam param  = new SmsParam(user.getName(),"充值",subtract,user.getBalance(),user.getMobile());
+            sms.send(param);
             return ResponseUtil.buildResponse();
         }
         return ResponseUtil.buildErrorResponse();

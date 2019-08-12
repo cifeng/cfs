@@ -35,6 +35,11 @@ $(function(){
         },fields: {}
     });
 
+    $("#search_qk_id").click(function(){
+        $("#startTime_id,#endTime_id").val("");
+    });
+
+
 });
 
 
@@ -101,6 +106,9 @@ function initTable() {
                             if(sycs>0){
                                 text+= "  使用次数:"+sycs+"次";
                             }
+                            $(".sum_span").text(text);
+                        }else{
+                            var text = "消费金额:0 元";
                             $(".sum_span").text(text);
                         }
 

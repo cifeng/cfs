@@ -121,5 +121,11 @@ pagehelper:
     supportMethodsArguments: true
     params: count=countSql      
       
-      
+sms:
+  serverip: app.cloopen.com
+  port: 8883
+  sid: xxxx....
+  token: xxxx...
+  appid: xxxx....
+  enabled: true
      

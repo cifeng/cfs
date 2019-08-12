@@ -3,6 +3,8 @@ package com.platform.cfs.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.platform.cfs.cloopen.Sms;
+import com.platform.cfs.cloopen.utils.SmsParam;
 import com.platform.cfs.common.exception.BusinessException;
 import com.platform.cfs.config.database.PageVO;
 import com.platform.cfs.entity.ConsumeRecord;
@@ -29,6 +31,8 @@ public class ConsumerRecordServiceImpl implements IConsumerRecordService {
 
     @Autowired
     private SystemUserMapper systemUserMapper;
+    @Autowired
+    private Sms sms;
 
     @Override
     public int save(ConsumeRecord consumeRecord) {
@@ -37,6 +41,8 @@ public class ConsumerRecordServiceImpl implements IConsumerRecordService {
         SystemUser user = systemUserMapper.queryById(consumeRecord.getUserId());
         user.setLastTime(consumeRecord.getLastTime());
         updateUser(consumeRecord, user);
+        SmsParam param  = new SmsParam(user.getName(),"消费",consumeRecord.getBalance(),user.getBalance(),user.getMobile());
+        sms.send(param);
         return consumeRecordMapper.save(consumeRecord);
     }
 
