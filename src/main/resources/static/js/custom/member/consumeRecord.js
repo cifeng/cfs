@@ -321,7 +321,7 @@ function initTableByBaseQuestion() {
                 detailView: false,                   //是否显示父子表
                 columns: [
                     {radio: true},
-                    {field: 'id', title: '消费记录id'},
+                    {field: 'id', title: '消费记录id',visible:false},
                     {field: 'userId', title: '用户id',formatter:formatterLenFn,len:40,visible:false},
                     {field: 'balance', title: '消费金额',formatter:formatterLenFn,len:40},
                     {field: 'frequency', title: '使用次数',formatter:formatterLenFn,len:40},
