@@ -75,6 +75,13 @@ public class ConsumeController {
         PageVO pageInfo = consumerRecordService.queryByList(consumeRecord);
         return ResponseUtil.buildResponse(pageInfo);
     }
+
+    @ResponseBody
+    @RequestMapping("/queryList")
+    public Response queryList(ConsumeRecord consumeRecord) {
+        PageVO pageInfo = consumerRecordService.queryUserAndList(consumeRecord);
+        return ResponseUtil.buildResponse(pageInfo);
+    }
     @ResponseBody
     @RequestMapping("/querybyid")
     public Response queryById(String id) {

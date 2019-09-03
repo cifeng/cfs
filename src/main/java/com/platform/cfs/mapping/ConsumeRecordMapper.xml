@@ -8,6 +8,8 @@
     <result column="frequency" property="frequency" jdbcType="INTEGER" />
     <result column="last_time" property="lastTime" jdbcType="TIMESTAMP" />
     <result column="discount" property="discount" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, user_id, balance, frequency, last_time, discount
@@ -132,7 +134,20 @@
     from consume_record
     <include refid="Base_Where_Clause" />
   </select>
-  
+
+  <select id="queryUserAndList" resultMap="BaseResultMap" parameterType="com.platform.cfs.entity.ConsumeRecord" >
+    select   c.id, c.user_id, c.balance, c.frequency, c.last_time, c.discount,t.`name`,t.mobile
+    from consume_record c, system_user t where c.user_id = t.id
+    <if test="startTime != null and startTime!=''" >
+      and c.last_time <![CDATA[>=]]> #{startTime}
+    </if>
+    <if test="endTime != null and endTime!=''" >
+      and c.last_time <![CDATA[<=]]> #{endTime}
+    </if>
+
+  </select>
+
+
   <delete id="delete" parameterType="com.platform.cfs.entity.ConsumeRecord">
     delete from consume_record where 1=2 or id = #{id}
   </delete>

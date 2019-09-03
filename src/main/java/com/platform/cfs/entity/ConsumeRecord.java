@@ -21,4 +21,6 @@ public class ConsumeRecord extends BaseEntity {
     private String startTime;
 
     private String endTime;
+    private String name;
+    private String mobile;
 }

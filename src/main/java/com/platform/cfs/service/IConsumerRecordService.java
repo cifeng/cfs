@@ -16,4 +16,6 @@ public interface IConsumerRecordService {
     int edit(ConsumeRecord consumeRecord);
 
     int delete(String id);
+
+    PageVO queryUserAndList(ConsumeRecord consumeRecord);
 }

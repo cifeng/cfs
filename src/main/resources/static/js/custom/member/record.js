@@ -51,7 +51,7 @@ function initTable() {
         //初始化Table
         table.Init = function () {
             $('#consumeRecordList').bootstrapTable({
-                url: '/consume/list',         //请求后台的URL（*）
+                url: '/consume/queryList',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 toolbar: '#toolbar',                //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -72,8 +72,8 @@ function initTable() {
                 detailView: false,                   //是否显示父子表
                 columns: [
                     {radio: true},
-                    {field: 'id', title: '消费记录id'},
-                    {field: 'userId', title: '用户id',formatter:formatterLenFn,len:40,visible:false},
+                    {field: 'name', title: '姓名',formatter:formatterLenFn,len:40},
+                    {field: 'mobile', title: '手机号'},
                     {field: 'balance', title: '消费金额',formatter:formatterLenFn,len:40},
                     {field: 'frequency', title: '使用次数',formatter:formatterLenFn,len:40},
                     {field: 'discount', title: '折扣',

@@ -81,6 +81,13 @@ public class ConsumerRecordServiceImpl implements IConsumerRecordService {
     }
 
     @Override
+    public PageVO queryUserAndList(ConsumeRecord consumeRecord) {
+        Page<PageInfo> pageInfo = PageHelper.startPage(consumeRecord.getPageIndex(), consumeRecord.getPageSize());
+        List<ConsumeRecord> list = consumeRecordMapper.queryUserAndList(consumeRecord);
+        return new PageVO(pageInfo.getTotal(),list);
+    }
+
+    @Override
     public ConsumeRecord queryById(String id) {
         return consumeRecordMapper.queryById(id);
     }
