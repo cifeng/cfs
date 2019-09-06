@@ -58,9 +58,7 @@ public class listUtil {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            if(log.isDebugEnabled()){
-                log.debug("线程任务执行结束,执行任务消耗了:{}毫秒",(System.currentTimeMillis()-time));
-            }
+                log.info("线程任务执行结束,执行任务消耗了:{}毫秒",(System.currentTimeMillis()-time));
         }
 
 
