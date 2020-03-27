@@ -35,6 +35,8 @@ public class Sms {
 	private String appId;
 	@Value("${sms.enabled}")
 	private Boolean enabled;
+	@Value("${sms.adminmobile}")
+	private String admdinMobile;
 
 	/**
 	 *
@@ -51,7 +53,10 @@ public class Sms {
 			array[1] = param.getType();
 			array[2] = param.getUpdateMoney()+"元";
 			array[3] = param.getBalance()+"元";
-			return send(param.getMobile(),param.getTemplateId(),array);
+			HashMap<String, Object> send = send(param.getMobile(), param.getTemplateId(), array);
+			HashMap<String, Object> adminSend = send(admdinMobile,param.getTemplateId(), array);
+			log.info("admin===send:{}",Jackson2Helper.toJsonString(adminSend));
+			return send;
 		}
 		return null;
 	}

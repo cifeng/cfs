@@ -39,7 +39,7 @@ public class SmsParam {
     /**
      * 模板id
      */
-    private String templateId = "462075";
+    private String templateId = "575171"; //"462075";
 
 
     public SmsParam() {

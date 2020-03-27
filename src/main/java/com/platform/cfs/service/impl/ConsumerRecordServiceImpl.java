@@ -25,6 +25,7 @@ import java.util.List;
 
 @Service
 public class ConsumerRecordServiceImpl implements IConsumerRecordService {
+    
 
     @Autowired
     private ConsumeRecordMapper consumeRecordMapper;
@@ -52,9 +53,6 @@ public class ConsumerRecordServiceImpl implements IConsumerRecordService {
 
             if(Utils.nulltoZero(consumeRecord.getBalance())>0){
                 String subtract = BigDecimalUtils.subtract(user.getBalance(), consumeRecord.getBalance());
-                if(new BigDecimal(subtract).doubleValue()<=0){
-                    throw new BusinessException(2001,"添加失败,用户账户余额不足");
-                }
                 user.setBalance(subtract);
             }
 
@@ -64,9 +62,6 @@ public class ConsumerRecordServiceImpl implements IConsumerRecordService {
                 &&user.getFrequency()>0
                 &&Utils.isNotNull(consumeRecord.getFrequency())
                 &&consumeRecord.getFrequency()>0){
-            if(consumeRecord.getFrequency()>user.getFrequency()){
-                throw new BusinessException(2002,"添加失败,用户剩余次数不足");
-            }
             user.setFrequency(user.getFrequency()-consumeRecord.getFrequency());
         }
         systemUserMapper.update(user);
