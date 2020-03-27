@@ -1,14 +1,12 @@
 package com.platform.cfs.utils;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-
 import java.util.concurrent.*;
 
 public class ThreadFactoryUtil {
     private static ExecutorService pool = null;
 
-    private ThreadFactoryUtil() {
-    }
+    private ThreadFactoryUtil() {}
 
     public static ExecutorService getThreadFactoryUtilInstance(int threadNum){
         ThreadFactory factory = new ThreadFactoryBuilder().setNameFormat("splitlist-pool-%d").build();
@@ -19,6 +17,4 @@ public class ThreadFactoryUtil {
         }
         return pool;
     }
-
-
 }
