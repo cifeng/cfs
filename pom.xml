@@ -26,7 +26,7 @@
 		<!--公共-->
 	    <commons-fileupload.version>1.3.3</commons-fileupload.version>
 	    <commons-lang3.version>3.3.1</commons-lang3.version>
-	    <commons-io.version>2.4</commons-io.version>
+	    <commons-io.version>2.7</commons-io.version>
 		<!--json-->
     	<fastjson.version>1.2.31</fastjson.version>
 		<fasterxml.uuid.version>3.1.4</fasterxml.uuid.version>
