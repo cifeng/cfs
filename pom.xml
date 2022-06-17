@@ -28,7 +28,7 @@
 	    <commons-lang3.version>3.3.1</commons-lang3.version>
 	    <commons-io.version>2.4</commons-io.version>
 		<!--json-->
-    	<fastjson.version>1.2.31</fastjson.version>
+    	<fastjson.version>1.2.83</fastjson.version>
 		<fasterxml.uuid.version>3.1.4</fasterxml.uuid.version>
 		<org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
 		<!--数据库-->
